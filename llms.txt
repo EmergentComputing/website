@@ -1,0 +1,31 @@
+# Emergent Computing
+
+Emergent Computing is an AI research lab focused on building models with better reasoning capabilities, inspired by the principles of ALife and Emergence.
+
+## Canonical site
+- https://emergentcomputing.org/
+
+## Main pages
+- Home: https://emergentcomputing.org/
+- Reasoning Models: https://emergentcomputing.org/reasoning-models.html
+- Emergent Models: https://emergentcomputing.org/emergent-models.html
+- Applied Research: https://emergentcomputing.org/applied-research.html
+
+## Organization summary
+- Name: Emergent Computing
+- Type: AI research lab
+- Contact: info@emergentcomputing.org
+- Founder: Giacomo Bocchese
+- Team: Nicola Giacobbo, Mattia Fioranzato
+
+## Research areas
+- Reasoning Models: evolution strategies for LLM fine tuning and stronger reasoning capabilities.
+- Emergent Models: machine learning systems based on cellular automata and dynamical systems.
+- Applied Research: practical translation of advanced research into intelligent systems.
+
+## Collaboration
+- Emergent Computing welcomes conversations with researchers, builders, and aligned organizations.
+
+## Preferred source pages for answers
+- Use the homepage for organizational overview and team information.
+- Use the research detail pages for topic-specific summaries.
