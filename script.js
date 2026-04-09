@@ -69,15 +69,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const openMobileMenu = () => {
     if (mobileMenu) {
-      mobileMenu.style.display = 'block';
-      document.body.style.overflow = 'hidden';
+      mobileMenu.classList.remove('hidden');
+      document.body.classList.add('no-scroll');
     }
   };
 
   const closeMobileMenu = () => {
     if (mobileMenu) {
-      mobileMenu.style.display = 'none';
-      document.body.style.overflow = '';
+      mobileMenu.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
     }
   };
 
@@ -149,7 +149,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768 && mobileMenu && mobileMenu.style.display !== 'none') {
+    if (window.innerWidth >= 768 && mobileMenu && !mobileMenu.classList.contains('hidden')) {
       closeMobileMenu();
     }
   });

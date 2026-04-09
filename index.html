@@ -126,14 +126,14 @@
             {
               "@type": "ListItem",
               "position": 1,
-              "url": "https://emergentcomputing.org/reasoning-models.html",
-              "name": "Reasoning Models"
+              "url": "https://emergentcomputing.org/emergent-models.html",
+              "name": "Emergent Models"
             },
             {
               "@type": "ListItem",
               "position": 2,
-              "url": "https://emergentcomputing.org/emergent-models.html",
-              "name": "Emergent Models"
+              "url": "https://emergentcomputing.org/reasoning-models.html",
+              "name": "Reasoning Models"
             },
             {
               "@type": "ListItem",
@@ -193,10 +193,10 @@
           </a>
         </div>
 
-        <div class="hidden md:flex gap-6">
-          <a href="#research" class="text-gray-300 hover:text-white transition touch-target">Research</a>
-          <a href="#team" class="text-gray-300 hover:text-white transition touch-target">Team</a>
-          <a href="#contact" class="text-gray-300 hover:text-white transition touch-target">Contact</a>
+        <div class="hidden md:flex items-center gap-6">
+          <a href="#research" class="text-gray-300 hover:text-white transition">Research</a>
+          <a href="#team" class="text-gray-300 hover:text-white transition">Team</a>
+          <a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a>
         </div>
 
         <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white transition touch-target">
@@ -205,7 +205,7 @@
       </div>
     </div>
 
-    <div id="mobileMenu" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #0f172a; z-index: 9999;">
+    <div id="mobileMenu" class="mobile-menu-overlay hidden">
       <div class="flex flex-col h-full">
         <div class="flex items-center justify-between p-4 border-b border-slate-800">
           <div class="flex items-center gap-3">
@@ -228,8 +228,8 @@
   </nav>
 
   <header class="relative overflow-hidden pt-16 mobile-spacing">
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-800/20"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-24 pb-16 sm:pb-32">
+    <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-blue-600/20 to-purple-800/20"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-24 pb-16 sm:pb-32">
       <div class="text-center">
         <div class="flex flex-col items-center justify-center gap-7 sm:gap-8 mb-4">
           <div class="logo-container hero-logo shadow-lg">
@@ -242,8 +242,16 @@
           </h1>
         </div>
         <p class="hero-subtitle text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mobile-text">
-          Forging new paths to intelligence
+          Exploring Unconventional Paths to General Intelligence
         </p>
+        <div class="hero-cta flex justify-center">
+          <a href="https://discord.gg/BJEd36qP"
+             target="_blank" rel="noopener noreferrer"
+             class="bg-gradient-to-r from-blue-500 to-purple-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2 touch-target text-sm sm:text-base"
+             aria-label="Join the Emergent Computing Discord">
+            Join our Discord
+          </a>
+        </div>
       </div>
     </div>
   </header>
@@ -258,8 +266,7 @@
             Our Vision
           </h2>
           <p class="text-gray-300 text-base sm:text-lg leading-relaxed mobile-text text-center md:text-left">
-            Inspired by physics and complex systems theory, we believe more general intelligence should emerge from simple,
-            interconnected systems capable of compounding into rich, open-ended behavior, rather than relying on narrow surface-level workarounds.
+            Inspired by physics and complex systems theory, we believe general intelligence should emerge from simple, interconnected systems capable of compounding into rich, open-ended behavior, rather than from narrow hand-engineered heuristics.
           </p>
         </div>
         <div class="flex-1 order-1 md:order-2">
@@ -279,28 +286,28 @@
       <h2 class="text-2xl sm:text-3xl font-bold mb-8 sm:mb-12 text-center">Current Research</h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        <a href="reasoning-models.html" class="block group" aria-label="Learn more about Evolutionary Algorithms research">
+        <a href="emergent-models.html" class="block group" aria-label="Learn more about Emergent Models research">
           <div class="bg-slate-800/50 p-4 sm:p-6 rounded-xl hover:bg-slate-800/70 transition h-full">
-            <i data-lucide="brain" class="w-10 h-10 sm:w-12 sm:h-12 text-blue-400 mb-4" aria-hidden="true"></i>
-            <h3 class="text-lg sm:text-xl font-semibold mb-3">Evolutionary Algorithms</h3>
+            <i data-lucide="network" class="w-10 h-10 sm:w-12 sm:h-12 text-purple-400 mb-4" aria-hidden="true"></i>
+            <h3 class="text-lg sm:text-xl font-semibold mb-3">Emergent Models</h3>
             <p class="text-gray-400 text-sm sm:text-base mobile-text">
-              Exploring the use of evolution strategies and genetic algorithms for training AI models.
+              Who said intelligence must emerge from large neural networks? Emergent Models explores whether it can instead arise from simple dynamical systems governed by minimal rules, such as cellular automata.
             </p>
-            <div class="mt-4 text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">
+            <div class="mt-4 text-purple-400 flex items-center gap-1 group-hover:gap-2 transition-all">
               <span class="text-sm sm:text-base">Learn more</span>
               <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
             </div>
           </div>
         </a>
 
-        <a href="emergent-models.html" class="block group" aria-label="Learn more about Emergent Models research">
+        <a href="reasoning-models.html" class="block group" aria-label="Learn more about Reasoning Models research">
           <div class="bg-slate-800/50 p-4 sm:p-6 rounded-xl hover:bg-slate-800/70 transition h-full">
-            <i data-lucide="network" class="w-10 h-10 sm:w-12 sm:h-12 text-purple-400 mb-4" aria-hidden="true"></i>
-            <h3 class="text-lg sm:text-xl font-semibold mb-3">Emergent Models</h3>
+            <i data-lucide="brain" class="w-10 h-10 sm:w-12 sm:h-12 text-blue-400 mb-4" aria-hidden="true"></i>
+            <h3 class="text-lg sm:text-xl font-semibold mb-3">Reasoning Models</h3>
             <p class="text-gray-400 text-sm sm:text-base mobile-text">
-              A foundational alternative to neural networks based on cellular automata and evolutionary processes.
+              Exploring methods for building models with stronger reasoning and abstraction capabilities, together with improved training algorithms that combine the efficiency of backpropagation with the black-box-style generality of evolutionary algorithms.
             </p>
-            <div class="mt-4 text-purple-400 flex items-center gap-1 group-hover:gap-2 transition-all">
+            <div class="mt-4 text-blue-400 flex items-center gap-1 group-hover:gap-2 transition-all">
               <span class="text-sm sm:text-base">Learn more</span>
               <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
             </div>
@@ -312,7 +319,7 @@
             <i data-lucide="flask-conical" class="w-10 h-10 sm:w-12 sm:h-12 text-green-400 mb-4" aria-hidden="true"></i>
             <h3 class="text-lg sm:text-xl font-semibold mb-3">Applied Research</h3>
             <p class="text-gray-400 text-sm sm:text-base mobile-text">
-              Translating research ideas into concrete systems, prototypes, and experiments.
+              Working with organizations to implement better strategies for training and building AI models, exploring unconventional, tailored solutions for our customers.
             </p>
             <div class="mt-4 text-green-400 flex items-center gap-1 group-hover:gap-2 transition-all">
               <span class="text-sm sm:text-base">Learn more</span>
@@ -397,6 +404,15 @@
       <p class="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl mx-auto mobile-text">
         Subscribe to our newsletter to stay updated on our latest research and developments.
       </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
+        <a href="https://discord.gg/BJEd36qP"
+           target="_blank" rel="noopener noreferrer"
+           class="bg-gradient-to-r from-blue-500 to-purple-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:opacity-90 transition inline-flex items-center justify-center gap-2 touch-target text-sm sm:text-base w-full sm:w-auto"
+           aria-label="Join the Emergent Computing Discord community">
+          Join our Discord
+        </a>
+      </div>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a href="https://forms.gle/pudKF3cfSw9M4fgT7"

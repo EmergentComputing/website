@@ -93,6 +93,19 @@ footer {
   height: 6.12rem;
 }
 
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--slate-900);
+  z-index: 60;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
 .icon {
   display: inline-block;
   vertical-align: middle;
@@ -135,6 +148,7 @@ footer {
 .left-0 { left: 0; }
 .right-0 { right: 0; }
 .z-50 { z-index: 50; }
+.pointer-events-none { pointer-events: none; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 .w-full { width: 100%; }
 .h-full { height: 100%; }
@@ -264,6 +278,7 @@ footer {
 .touch-target { min-height: 44px; min-width: 44px; }
 .hero-title { font-size: 2.5rem; line-height: 1.2; margin: 0; }
 .hero-subtitle { margin: 0.6rem 0 0; line-height: 1.25; }
+.hero-cta { margin-top: 2.5rem; }
 .mobile-text { word-wrap: break-word; overflow-wrap: break-word; }
 .transition { transition: all 0.2s ease; }
 .transition-all { transition: all 0.2s ease; }
@@ -400,6 +415,10 @@ footer {
   .hero-logo {
     width: 4.32rem;
     height: 4.32rem;
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
   }
 
   .hero-title {
