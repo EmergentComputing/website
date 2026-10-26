@@ -4,7 +4,9 @@
 
 ## Key facts
 
-- Main paper: G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy, "Emergent Models: Intelligence from Tiny Substrates", arXiv:2608.14019 [cs.NE], August 2026. https://arxiv.org/abs/2608.14019
+- Papers (both by G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy):
+  - "Emergent Models: Intelligence from Tiny Substrates", arXiv:2608.14019 [cs.NE], August 2026. https://arxiv.org/abs/2608.14019
+  - "Emergent Models: Machine Learning from Cellular Automata", Proceedings of the Artificial Life Conference 2026 (ALIFE 2026), MIT Press, doi:10.1162/ISAL.a.953; oral presentation, 18 August 2026. https://doi.org/10.1162/ISAL.a.953
 - An Emergent Model (EM) is a tuple M = (S, f, H, E, D, ⊕): state space, transition rule (usually local), halting condition, encoder, decoder, and an operator combining a program p with the encoded input. Prediction: y = D(f^T(p ⊕ E(x))), with T the first step at which H fires.
 - Training searches mainly over the initial state (the program), optionally the rule and interface, with evolutionary algorithms.
 - Latent universality (theorem): some EMs with fixed rule, halting condition and interface compute every partial computable function on binary strings by varying only a finite program. Existence only; no claim about search efficiency.
@@ -27,7 +29,7 @@
 - [Emergent Models](https://emergentcomputing.org/emergent-models.html): framework, theorem, experiments with numbers and limitations, machines, neural CA, hardware directions, open questions, BibTeX.
 - [Reasoning models](https://emergentcomputing.org/reasoning-models.html): hypotheses and planned tests.
 - [Applied research](https://emergentcomputing.org/applied-research.html): collaboration scope and method.
-- [Writing](https://emergentcomputing.org/blog/): notes.
+- [Writing](https://emergentcomputing.org/blog/index.html): notes.
 
 ## Code
 

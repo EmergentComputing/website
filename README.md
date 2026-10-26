@@ -1,6 +1,8 @@
 # emergentcomputing.org
 
-Static site of Emergent Computing. Plain HTML, one stylesheet, one script; no build step.
+Static site of Emergent Computing. Plain HTML, one stylesheet, two scripts; no build step.
+The site currently carries two complete designs on the same markup: A (editorial) and B (instrument).
+The header switch (or `?theme=a` / `?theme=b` in the URL) selects one; the choice is remembered per browser.
 Pushing to the deployed branch publishes the site (currently Netlify).
 
 ## Structure
@@ -13,8 +15,9 @@ applied-research.html      collaborations
 blog/index.html            list of notes
 blog/<slug>.html           one file per note
 blog/_template.html        starting point for a new note (noindex)
-style.css                  all styles; colour tokens at the top, dark mode via prefers-color-scheme
-script.js                  EM43 space-time diagrams, BibTeX copy, footer year
+style.css                  shared rules, then the A and B theme blocks (tokens at the top)
+viz.js                     model engine: EM43, LUTM-6, CEM1D, elementary CA (all figures are computed)
+script.js                  design switch, live hero, figures (<canvas data-viz=...>), EM43 explorer, BibTeX copy
 images/team/               320×320 team photos
 sitemap.xml, robots.txt, llms.txt, 404.html, _redirects (Netlify only), .nojekyll (GitHub Pages)
 ```
@@ -43,3 +46,9 @@ Then open http://localhost:8000.
 
 State what was done and what was found; give numbers with their conditions; keep limitations visible;
 label untested ideas as hypotheses. No marketing language.
+
+## Keeping one design
+
+When a design is chosen: delete the other theme block in `style.css`, remove the `.theme-switch`
+element from the page headers and the theme `<script>` in each `<head>`, and drop the unused fonts
+from the Google Fonts link.

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="a">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var t="a";try{var q=new URLSearchParams(location.search).get("theme");t=(q==="a"||q==="b")?q:(localStorage.getItem("ec-theme")||"a");}catch(e){}document.documentElement.dataset.theme=t;})();</script>
   <title>What the Emergent Models paper shows, and what it does not — Emergent Computing</title>
   <meta name="description" content="The claims of 'Emergent Models: Intelligence from Tiny Substrates', the evidence behind each, and what remains open.">
   <meta name="author" content="Emergent Computing">
   <link rel="canonical" href="https://emergentcomputing.org/blog/emergent-models-what-the-paper-shows.html">
-  <meta name="theme-color" content="#f6f7f8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Emergent Computing">
@@ -22,7 +21,7 @@
   <link rel="icon" type="image/png" href="../images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
   <link rel="stylesheet" href="../style.css">
 
   <script type="application/ld+json">
@@ -46,22 +45,23 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="28" height="28">Emergent Computing</a>
+      <a class="brand" href="../index.html"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Emergent Computing</a>
       <nav class="nav" aria-label="Main">
         <a href="../index.html#research">Research</a>
         <a href="../index.html#publications">Publications</a>
         <a href="../index.html#code">Code</a>
-        <a href="./" aria-current="page">Writing</a>
+        <a href="../blog/index.html" aria-current="page">Writing</a>
         <a href="../index.html#people">People</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
+      <div class="theme-switch" role="group" aria-label="Design version"><span>design</span><button type="button" data-set-theme="a">A</button><button type="button" data-set-theme="b">B</button></div>
     </div>
   </header>
 
   <main id="main">
     <article class="wrap">
       <header class="post-head">
-        <p class="eyebrow">Note</p>
+        <p class="kicker">Note</p>
         <h1>What the Emergent Models paper shows, and what it does not</h1>
         <p class="post-meta"><time datetime="2026-10-26">26 October 2026</time> · Emergent Computing · 5 min read</p>
       </header>
@@ -97,7 +97,7 @@
       </div>
 
       <nav class="post-nav" aria-label="Post navigation">
-        <a href="./">← All notes</a>
+        <a href="index.html">← All notes</a>
       </nav>
     </article>
   </main>
@@ -108,13 +108,14 @@
         <a href="../index.html">Home</a>
         <a href="../emergent-models.html">Emergent Models</a>
         <a href="../reasoning-models.html">Reasoning models</a>
-        <a href="./">Writing</a>
+        <a href="index.html">Writing</a>
         <a href="https://github.com/EmergentComputing">GitHub</a>
       </nav>
-      <p>© <span data-year>2026</span> Emergent Computing · This site sets no cookies and runs no analytics.</p>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
     </div>
   </footer>
 
-  <script src="../script.js" defer></script>
+  <script src="../viz.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>

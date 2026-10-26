@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="a">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var t="a";try{var q=new URLSearchParams(location.search).get("theme");t=(q==="a"||q==="b")?q:(localStorage.getItem("ec-theme")||"a");}catch(e){}document.documentElement.dataset.theme=t;})();</script>
   <title>Reasoning models: hypotheses — Emergent Computing</title>
   <meta name="description" content="Hypotheses on iterated and looped reasoning models: iteration and extrapolation, the ratio of parameters to computation time, locality as an inductive bias, and search methods. No results yet.">
   <meta name="author" content="Emergent Computing">
   <link rel="canonical" href="https://emergentcomputing.org/reasoning-models.html">
-  <meta name="theme-color" content="#f6f7f8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Emergent Computing">
@@ -21,7 +20,7 @@
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -54,22 +53,23 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="28" height="28">Emergent Computing</a>
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Emergent Computing</a>
       <nav class="nav" aria-label="Main">
         <a href="index.html#research" aria-current="page">Research</a>
         <a href="index.html#publications">Publications</a>
         <a href="index.html#code">Code</a>
-        <a href="blog/">Writing</a>
+        <a href="blog/index.html">Writing</a>
         <a href="index.html#people">People</a>
         <a href="index.html#contact">Contact</a>
       </nav>
+      <div class="theme-switch" role="group" aria-label="Design version"><span>design</span><button type="button" data-set-theme="a">A</button><button type="button" data-set-theme="b">B</button></div>
     </div>
   </header>
 
   <main id="main">
     <div class="wrap">
       <header class="page-head">
-        <p class="eyebrow">Research · <span class="tag tag-hypothesis">hypothesis</span></p>
+        <p class="kicker">Research · <span class="status hyp">hypothesis</span></p>
         <h1>Reasoning models</h1>
         <p class="lede">Hypotheses about what makes a model reason procedurally, and how each could be tested. There are no results on this page yet; it will change as experiments come in.</p>
       </header>
@@ -84,6 +84,8 @@
         <p>Applying one update rule an input-dependent number of times lets a model represent rules that hold beyond the training range. A single forward pass of fixed depth can only interpolate within it.</p>
         <p><b>Test.</b> Same architecture and parameter count, fixed depth versus looped with adaptive halting. Arithmetic and string tasks; accuracy as a function of input length beyond training.</p>
       </section>
+
+      <figure class="figure wide"><canvas data-viz="act" style="height:240px" role="img" aria-label="EM43 halting time against input size for five tasks"></canvas><figcaption><b>Adaptive computation in EM43.</b> Steps until halting against the input x for the five learned models (x + 1, 2x, x mod 4, round(x/3), x·(1 + x mod 2)). Computation time grows with the input, including beyond the training range (dashed line), instead of being fixed by the architecture.</figcaption></figure>
 
       <section class="hypothesis" id="h2">
         <p class="label">H2 · parameters per unit of time</p>
@@ -126,13 +128,14 @@
         <a href="index.html">Home</a>
         <a href="emergent-models.html">Emergent Models</a>
         <a href="applied-research.html">Applied research</a>
-        <a href="blog/">Writing</a>
+        <a href="blog/index.html">Writing</a>
         <a href="https://github.com/EmergentComputing">GitHub</a>
       </nav>
-      <p>© <span data-year>2026</span> Emergent Computing · This site sets no cookies and runs no analytics.</p>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="viz.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

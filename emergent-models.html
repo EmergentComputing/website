@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="a">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var t="a";try{var q=new URLSearchParams(location.search).get("theme");t=(q==="a"||q==="b")?q:(localStorage.getItem("ec-theme")||"a");}catch(e){}document.documentElement.dataset.theme=t;})();</script>
   <title>Emergent Models — Emergent Computing</title>
   <meta name="description" content="Emergent Models are machine-learning models built from simple dynamical systems: a latent state, a local update rule, a halting condition and a fixed interface. Framework, latent universality, experiments, machines and open questions.">
   <meta name="author" content="Emergent Computing">
   <link rel="canonical" href="https://emergentcomputing.org/emergent-models.html">
-  <meta name="theme-color" content="#f6f7f8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Emergent Computing">
@@ -21,7 +20,7 @@
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -56,22 +55,23 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="28" height="28">Emergent Computing</a>
+      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Emergent Computing</a>
       <nav class="nav" aria-label="Main">
         <a href="index.html#research" aria-current="page">Research</a>
         <a href="index.html#publications">Publications</a>
         <a href="index.html#code">Code</a>
-        <a href="blog/">Writing</a>
+        <a href="blog/index.html">Writing</a>
         <a href="index.html#people">People</a>
         <a href="index.html#contact">Contact</a>
       </nav>
+      <div class="theme-switch" role="group" aria-label="Design version"><span>design</span><button type="button" data-set-theme="a">A</button><button type="button" data-set-theme="b">B</button></div>
     </div>
   </header>
 
   <main id="main">
     <div class="wrap">
       <header class="page-head">
-        <p class="eyebrow">Research · <span class="tag tag-published">published</span></p>
+        <p class="kicker">Research · <span class="status pub">published</span></p>
         <h1>Emergent Models</h1>
         <p class="lede">A model is a simple dynamical system: a state, a local update rule, a halting condition and a fixed way to write inputs and read outputs. Training searches for the initial state that makes the system compute the task.</p>
         <nav class="toc" aria-label="On this page">
@@ -98,13 +98,13 @@
           <li>Experiments use deliberately minimal models (tens to a few hundred parameters). The clearest result: a 140-bit cellular automaton trained on x ≤ 30 computes x + 1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2) exactly up to x = 1000.</li>
           <li>The framework is foundational. It does not propose a competitive architecture, and several tasks were not learned.</li>
         </ul>
-        <p class="small muted">Source: G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy, <a href="https://arxiv.org/abs/2608.14019"><i>Emergent Models: Intelligence from Tiny Substrates</i></a>, arXiv:2608.14019, 2026.</p>
+        <p class="small muted">Sources: G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy, <a href="https://arxiv.org/abs/2608.14019"><i>Emergent Models: Intelligence from Tiny Substrates</i></a>, arXiv:2608.14019, 2026; and <a href="https://doi.org/10.1162/ISAL.a.953"><i>Emergent Models: Machine Learning from Cellular Automata</i></a>, ALIFE 2026, MIT Press.</p>
 
         <h2 id="model">The model</h2>
         <p>An Emergent Model is a tuple <code>M = (S, f, H, E, D, ⊕)</code>: a state space <code>S</code> over a graph of cells, a transition function <code>f</code> (usually local), a halting operator <code>H</code>, an encoder <code>E</code>, a decoder <code>D</code>, and an operator <code>⊕</code> that combines the program with the encoded input.</p>
       </div>
 
-      <figure class="figure" style="max-width:820px;margin:8px 0 28px">
+      <figure class="figure wide">
         <div class="figure-body">
           <svg class="diagram" viewBox="0 0 760 150" role="img" aria-label="Inference in an Emergent Model: the input x is encoded, combined with the program p, the rule f is iterated until the halting condition holds, and the decoder reads the output y.">
             <defs>
@@ -132,7 +132,7 @@
             <text x="568" y="95" text-anchor="middle">D</text>
             <line x1="596" y1="90" x2="634" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
             <text x="644" y="95">y</text>
-            <text x="18" y="140" class="muted" fill="currentColor" style="opacity:.65">microsteps t: internal computation time, adaptive per input</text>
+            <text x="18" y="140" style="opacity:.6">microsteps t: internal computation time, adaptive per input</text>
           </svg>
         </div>
       </figure>
@@ -156,7 +156,7 @@
         <p>A zoo of minimal instances, each trained with population-based genetic algorithms. Results are representative runs, not multi-seed statistics.</p>
       </div>
 
-      <div class="table-scroll" style="max-width:1000px">
+      <div class="table-scroll">
         <table class="data">
           <thead>
             <tr><th>Model</th><th>Substrate</th><th>Searched</th><th>Task</th><th>Result</th></tr>
@@ -172,37 +172,52 @@
       </div>
 
       <div class="prose">
+        <figure class="figure wide"><canvas data-viz="cem" style="height:170px" role="img" aria-label="CEM1D lattice over time"></canvas><figcaption><b>CEM1D</b>, computed from the learned update equation reported in the paper, <code>s ← s + 0.1(0.796 s<sub>j−1</sub> − 0.319 s<sub>j</sub> − 1.628 s<sub>j+1</sub> − 0.03 s<sub>j</sub><sup>3</sup>)</code>. Time runs left to right, 19 cells top to bottom; red positive, blue negative. Here random values are written at the four input ports every 30 steps (vertical lines) instead of CartPole observations.</figcaption></figure>
+
         <h2 id="grokking">Geometric grokking</h2>
         <p>In EM43 runs that generalise, the computation is visible as a regular space-time geometry that keeps the same shape as the input grows. For x mod 4, signals from the program region repeatedly shift the red marker until blue cells become the majority and the machine halts with the marker at the answer. The paper calls this <b>geometric grokking</b>. Whether it persists on harder tasks, or is partly an artefact of these tasks and this interface, is open.</p>
       </div>
 
-      <div class="figure-row" style="margin:8px 0 12px">
-        <figure class="figure" data-em43 data-task="mod4" data-x="15" data-max-height="300">
-          <canvas role="img" aria-label="EM43 computing 15 mod 4"></canvas>
-          <div class="readout" data-em43-readout></div>
-        </figure>
-        <figure class="figure" data-em43 data-task="mod4" data-x="30" data-max-height="300">
-          <canvas role="img" aria-label="EM43 computing 30 mod 4"></canvas>
-          <div class="readout" data-em43-readout></div>
-        </figure>
-        <figure class="figure" data-em43 data-task="mod4" data-x="70" data-max-height="300">
-          <canvas role="img" aria-label="EM43 computing 70 mod 4"></canvas>
-          <div class="readout" data-em43-readout></div>
-        </figure>
+      <figure class="figure wide" data-explorer>
+        <div class="controls">
+          <label>task
+            <select data-task aria-label="Task">
+              <option value="plus1">x + 1</option>
+              <option value="x2">2x</option>
+              <option value="mod4">x mod 4</option>
+              <option value="rounddiv3" selected>round(x/3)</option>
+              <option value="mod2c">x·(1 + x mod 2)</option>
+            </select>
+          </label>
+          <label>x <input data-x type="number" min="0" max="150" step="1" value="47" inputmode="numeric" aria-label="Input x"></label>
+          <button type="button" data-random>random x &gt; 30</button>
+        </div>
+        <canvas role="img" aria-label="EM43 space-time diagram for the selected task and input"></canvas>
+        <div class="readout" data-readout aria-live="polite"></div>
+        <figcaption><b>EM43 explorer.</b> Choose a task and an input up to 150. Time runs downward; the input is the red cell x cells right of the green origin; the output is the position of the rightmost red cell when blue cells become the majority. All five learned models were trained on x ≤ 30.</figcaption>
+      </figure>
+
+      <div class="figure-row">
+        <figure class="figure"><canvas data-viz="em43" data-task="mod4" data-x="15" style="height:280px" role="img" aria-label="EM43 computing 15 mod 4"></canvas><figcaption>x mod 4, x = 15 → 3</figcaption></figure>
+        <figure class="figure"><canvas data-viz="em43" data-task="mod4" data-x="30" style="height:280px" role="img" aria-label="EM43 computing 30 mod 4"></canvas><figcaption>x = 30 → 2</figcaption></figure>
+        <figure class="figure"><canvas data-viz="em43" data-task="mod4" data-x="70" style="height:280px" role="img" aria-label="EM43 computing 70 mod 4"></canvas><figcaption>x = 70 → 2 (outside training range)</figcaption></figure>
       </div>
-      <p class="small muted" style="max-width:var(--measure)">The same learned EM43 model on x = 15, 30 and 70. Each diagram is computed in your browser from the published rule; time runs downward. Scales differ between panels.</p>
+      <p class="small muted" style="max-width:70ch">The same learned x mod 4 model at three input sizes: the mechanism keeps its shape. Scales differ between panels.</p>
 
       <div class="prose">
-        <h2 id="machines">Machines with a fixed interface <span class="tag tag-progress">in progress</span></h2>
+        <h2 id="machines">Machines with a fixed interface <span class="status prog">in progress</span></h2>
         <p>The theorem guarantees that latent-universal models exist. These projects build concrete, small ones, to study how searchable their programs are.</p>
         <ul>
           <li><b><a href="https://github.com/EmergentComputing/LUTM-1">LUTM-1</a></b>: a one-tape Turing machine with 150 states, 16 symbols and 2,384 transitions. Every run starts from the tape <code>p#x</code>; the output is the bits right of <code>#</code> at halting. Verified programs include identity (5 bits), +1 (176 bits), ×2 (114 bits) and squaring (4,605 bits), all independent of input length. Simulators in Python, NumPy and CUDA, an island GA and a program miner.</li>
           <li><b><a href="https://github.com/EmergentComputing/LUTM-6">LUTM-6</a></b>: two tapes, four symbols, nine running states, 144 transitions. The program tape is read-only; input bits are written as fixed pairs, independent of the program. Known programs for NOT, reverse, increment and square.</li>
           <li><b>LU-A</b>: a language of ten operations on one data tape. The <a href="https://bocchesegiacomo.github.io/lu-sim/">LUTM-6 and LU-A simulators</a> run both side by side; every listed program is checked exact on all inputs up to 8 bits and on random 16-, 32- and 64-bit inputs.</li>
         </ul>
+      </div>
+      <figure class="figure wide"><canvas data-viz="lutm" style="height:190px" role="img" aria-label="LUTM-6 data tape over time"></canvas><figcaption><b>LUTM-6</b> running the evolved program <code>0111011#11011#000#01#0000#1#1100</code> (parity) on input 1101001: 1,429 transitions, time left to right, data-tape cells top to bottom, head in red. Computed in your browser with a port of the lu-sim machine.</figcaption></figure>
+      <div class="prose">
         <p><b>Status.</b> For both machines, a constructive argument for fixed-interface universality is written out but not formally verified; tests give finite evidence, not proof. The open question is search: how program length, run time and fitness landscape interact.</p>
 
-        <h2 id="nca">Neural cellular automata <span class="tag tag-progress">in progress</span></h2>
+        <h2 id="nca">Neural cellular automata <span class="status prog">in progress</span></h2>
         <p>Here the rule is a small neural network shared by every cell, trained by gradient descent, and the program is a learned task-specific state in dedicated channels. One rule, many programs: a differentiable route to the fixed-rule, variable-program regime.</p>
         <p><b><a href="https://github.com/BoccheseGiacomo/ncpu-em-1d">NCPU-EM-1D</a></b> (<a href="https://bocchesegiacomo.github.io/ncpu-em-1d-demo/">demo</a>) learns seven string tasks with one rule (10,150 parameters, 13 channels). Trained on strings up to 16 bits; semantic accuracy beyond that, synchronous updates:</p>
       </div>
@@ -224,10 +239,13 @@
         <p>Related code: <a href="https://github.com/BoccheseGiacomo/ncpu-em-2d">NCPU-EM-2D</a> (program tiles on a 2D grid), <a href="https://github.com/BoccheseGiacomo/ncpu-computer">ncpu-computer</a> (single-task baselines), <a href="https://github.com/BoccheseGiacomo/ncpu-simplified">ncpu-simplified</a> (binary addition with single-cell inputs and outputs).</p>
         <p class="small muted">This line builds on NCPU, <a href="https://ncpu.pages.dev/"><i>Self-organized boolean computation</i></a> by Iliya Zhechev (Sofia University) and Piotr Walas (Warsaw University of Technology), ALIFE 2026 (<a href="https://github.com/ichko/ncpu">code</a>), and on Béna and Faldor, <a href="https://arxiv.org/abs/2505.13058"><i>A Path to Universal Neural Cellular Automata</i></a>.</p>
 
-        <h2 id="hardware">Parallel and analog substrates <span class="tag tag-hypothesis">hypothesis</span></h2>
+        <h2 id="hardware">Parallel and analog substrates <span class="status hyp">hypothesis</span></h2>
         <p>Local rules suit parallel hardware: each cell needs only its neighbours. Three directions, none tested yet.</p>
         <p><b>Search on GPUs.</b> Population-based search evaluates many candidate programs on the same inputs, which is a batch of independent simulations. LUTM-1 and LUTM-6 already run candidates in parallel on CUDA. Bit-packed cellular automata (two bits per EM43 cell) would put dozens of cells into one machine word.</p>
         <p><b>CA-like hardware for arithmetic.</b> The direction is hardware in which operations such as multiplication cost constant work per cell per step, with no instruction stream. Locality sets a floor: an output that depends on inputs d cells away needs at least d / r steps, with r the rule radius. For n-bit multiplication on a k-dimensional local array the latency therefore grows at least like n<sup>1/k</sup>. What can be constant is work per cell and throughput: a pipelined 1D array can emit one product bit per step (Atrubin, 1965). Constant latency needs non-local summation, such as threshold gates of unbounded fan-in or physical summation of currents or light. That trades time for precision and fan-in. Which regime is worth building, and whether search can find the rules, is open.</p>
+      </div>
+      <figure class="figure wide"><canvas data-viz="cone" style="height:200px" role="img" aria-label="Rule 30 from a single cell with its light cone"></canvas><figcaption><b>Locality bound.</b> Rule 30 started from one live cell. With radius-1 rules no cell outside the dashed cone can be affected, so an output that depends on inputs d cells away needs at least d steps.</figcaption></figure>
+      <div class="prose">
         <p><b>Analog media.</b> CEM1D and CEM2D are continuous substrates. With real-valued cells the same framework could describe analog computing, but the paper gives no guarantee there. The deciding property for physical implementation is tolerance to noise; NCPU models trained with random asynchronous updates are a first step toward measuring it.</p>
 
         <h2 id="open">Open questions</h2>
@@ -241,9 +259,19 @@
 
         <h2 id="cite">Cite</h2>
       </div>
-      <div class="bibtex-wrap" style="max-width:var(--measure);margin-bottom:64px">
-        <button class="copy-btn" type="button" data-copy="bibtex-em">copy</button>
-<pre class="bibtex" id="bibtex-em">@misc{bocchese2026emergent,
+      <div style="max-width:70ch;margin-bottom:72px">
+        <div class="bibtex-wrap"><button class="copy-btn" type="button" data-copy="bib-alife2026">copy</button>
+<pre class="bibtex" id="bib-alife2026">@inproceedings{bocchese2026alife,
+  title     = {Emergent Models: Machine Learning from Cellular Automata},
+  author    = {Bocchese, Giacomo and Giacobbo, Nicola and Guichard, Etienne
+               and Wiles, James and Devireddy, Akshaj},
+  booktitle = {Proceedings of the Artificial Life Conference 2026 (ALIFE 2026)},
+  publisher = {MIT Press},
+  year      = {2026},
+  doi       = {10.1162/ISAL.a.953}
+}</pre></div>
+        <div class="bibtex-wrap"><button class="copy-btn" type="button" data-copy="bib-arxiv2026">copy</button>
+<pre class="bibtex" id="bib-arxiv2026">@misc{bocchese2026emergent,
   title         = {Emergent Models: Intelligence from Tiny Substrates},
   author        = {Bocchese, Giacomo and Giacobbo, Nicola and Guichard, Etienne
                    and Wiles, James and Devireddy, Akshaj},
@@ -252,7 +280,7 @@
   archivePrefix = {arXiv},
   primaryClass  = {cs.NE},
   url           = {https://arxiv.org/abs/2608.14019}
-}</pre>
+}</pre></div>
       </div>
     </div>
   </main>
@@ -263,13 +291,14 @@
         <a href="index.html">Home</a>
         <a href="reasoning-models.html">Reasoning models</a>
         <a href="applied-research.html">Applied research</a>
-        <a href="blog/">Writing</a>
+        <a href="blog/index.html">Writing</a>
         <a href="https://github.com/EmergentComputing">GitHub</a>
       </nav>
-      <p>© <span data-year>2026</span> Emergent Computing · This site sets no cookies and runs no analytics.</p>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="viz.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
