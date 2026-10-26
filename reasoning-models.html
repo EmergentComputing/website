@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="a">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>(function(){var t="a";try{var q=new URLSearchParams(location.search).get("theme");t=(q==="a"||q==="b")?q:(localStorage.getItem("ec-theme")||"a");}catch(e){}document.documentElement.dataset.theme=t;})();</script>
+  <script>(function(){var m;try{m=localStorage.getItem("ec-mode");}catch(e){}if(m!=="light"&&m!=="dark"){m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.mode=m;})();</script>
   <title>Reasoning models: hypotheses — Emergent Computing</title>
   <meta name="description" content="Hypotheses on iterated and looped reasoning models: iteration and extrapolation, the ratio of parameters to computation time, locality as an inductive bias, and search methods. No results yet.">
   <meta name="author" content="Emergent Computing">
@@ -20,7 +20,7 @@
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -53,7 +53,7 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Emergent Computing</a>
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
       <nav class="nav" aria-label="Main">
         <a href="index.html#research" aria-current="page">Research</a>
         <a href="index.html#publications">Publications</a>
@@ -62,7 +62,7 @@
         <a href="index.html#people">People</a>
         <a href="index.html#contact">Contact</a>
       </nav>
-      <div class="theme-switch" role="group" aria-label="Design version"><span>design</span><button type="button" data-set-theme="a">A</button><button type="button" data-set-theme="b">B</button></div>
+      <button class="mode-toggle" type="button" data-mode-toggle aria-label="Switch colour mode"><svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></button>
     </div>
   </header>
 
@@ -109,7 +109,7 @@
       </section>
 
       <div class="prose">
-        <h2>Methods we are developing</h2>
+        <h2>Methods in development</h2>
         <ul>
           <li><b>Evolution strategies for training.</b> Black-box optimisation where gradients through long loops are unstable or unavailable, including fine-tuning of language models. A hybrid splits the work: gradients for the rule, evolutionary search for programs and halting.</li>
           <li><b>Search on rugged landscapes.</b> Neutral drift, quality-diversity search over behavioural descriptors (halting time, space used), and library learning that reuses previously found programs as building blocks.</li>
@@ -124,12 +124,14 @@
 
   <footer class="site-footer">
     <div class="wrap">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
       <nav aria-label="Footer">
-        <a href="index.html">Home</a>
         <a href="emergent-models.html">Emergent Models</a>
+        <a href="reasoning-models.html">Reasoning models</a>
         <a href="applied-research.html">Applied research</a>
         <a href="blog/index.html">Writing</a>
         <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
       </nav>
       <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
     </div>
