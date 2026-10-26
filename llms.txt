@@ -1,31 +1,40 @@
 # Emergent Computing
 
-Emergent Computing is an AI research lab focused on building models with better reasoning capabilities, inspired by the principles of ALife and Emergence.
+> Emergent Computing is a research lab, founded in 2024, studying how computation emerges in simple, local, iterated dynamical systems (cellular automata, continuous media, small Turing machines) and how such computation can be found by search instead of designed.
 
-## Canonical site
-- https://emergentcomputing.org/
+## Key facts
 
-## Main pages
-- Home: https://emergentcomputing.org/
-- Reasoning Models: https://emergentcomputing.org/reasoning-models.html
-- Emergent Models: https://emergentcomputing.org/emergent-models.html
-- Applied Research: https://emergentcomputing.org/applied-research.html
+- Main paper: G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy, "Emergent Models: Intelligence from Tiny Substrates", arXiv:2608.14019 [cs.NE], August 2026. https://arxiv.org/abs/2608.14019
+- An Emergent Model (EM) is a tuple M = (S, f, H, E, D, ⊕): state space, transition rule (usually local), halting condition, encoder, decoder, and an operator combining a program p with the encoded input. Prediction: y = D(f^T(p ⊕ E(x))), with T the first step at which H fires.
+- Training searches mainly over the initial state (the program), optionally the rule and interface, with evolutionary algorithms.
+- Latent universality (theorem): some EMs with fixed rule, halting condition and interface compute every partial computable function on binary strings by varying only a finite program. Existence only; no claim about search efficiency.
+- EM43, a 1D four-state cellular automaton with 70 parameters (140 bits), trained on x in [0, 30], computes x+1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2) exactly on [30, 1000]. Two-input multiplication was not learned.
+- Other experiments: Game of Life with fixed rule learns x+k (random search about as good as a GA); a continuous 1D lattice with 3 trainable coefficients reaches 735 ± 107 of 800 on CartPole; a continuous 2D field adapts online to food/poison phases (meta-score 0.71; a dense RNN baseline 0.82).
+- The paper describes itself as foundational: it does not propose a competitive architecture.
+- Ongoing work: LUTM-1 and LUTM-6 (small Turing machines with a fixed input/output interface, candidates for latent universality, not formally verified); LU-A (ten-operation language); NCPU-EM (neural cellular automata with one shared rule and a learned program per task, building on NCPU by Iliya Zhechev and Piotr Walas).
+- Reasoning-model work is at the hypothesis stage: iteration and extrapolation, the ratio of parameters to computation time (q = N_params / T), locality as an inductive bias, evolution strategies and search methods. No results yet.
 
-## Organization summary
-- Name: Emergent Computing
-- Type: AI research lab
-- Contact: info@emergentcomputing.org
-- Founder: Giacomo Bocchese
-- Team: Nicola Giacobbo, Mattia Fioranzato
+## People
 
-## Research areas
-- Reasoning Models: evolution strategies for LLM fine tuning and stronger reasoning capabilities.
-- Emergent Models: machine learning systems based on cellular automata and dynamical systems.
-- Applied Research: practical translation of advanced research into intelligent systems.
+- Giacomo Bocchese: founder; also Wolfram Institute.
+- Nicola Giacobbo: co-founder, research.
+- Akshaj Devireddy: affiliate researcher; Wolfram Institute.
+- Mattia Fioranzato: affiliate developer.
 
-## Collaboration
-- Emergent Computing welcomes conversations with researchers, builders, and aligned organizations.
+## Pages
 
-## Preferred source pages for answers
-- Use the homepage for organizational overview and team information.
-- Use the research detail pages for topic-specific summaries.
+- [Home](https://emergentcomputing.org/): overview, research lines with status, publications, code, people, contact.
+- [Emergent Models](https://emergentcomputing.org/emergent-models.html): framework, theorem, experiments with numbers and limitations, machines, neural CA, hardware directions, open questions, BibTeX.
+- [Reasoning models](https://emergentcomputing.org/reasoning-models.html): hypotheses and planned tests.
+- [Applied research](https://emergentcomputing.org/applied-research.html): collaboration scope and method.
+- [Writing](https://emergentcomputing.org/blog/): notes.
+
+## Code
+
+- https://github.com/EmergentComputing (EM43, GoL-EM, CEM1D, LUTM-1, LUTM-6)
+- https://github.com/BoccheseGiacomo/lu-sim (LUTM-6 and LU-A simulators)
+- https://github.com/BoccheseGiacomo/ncpu-em-1d (NCPU-EM-1D)
+
+## Contact
+
+info@emergentcomputing.org

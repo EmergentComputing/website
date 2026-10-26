@@ -1,47 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emergent Models — Emergent Computing</title>
+  <meta name="description" content="Emergent Models are machine-learning models built from simple dynamical systems: a latent state, a local update rule, a halting condition and a fixed interface. Framework, latent universality, experiments, machines and open questions.">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/emergent-models.html">
+  <meta name="theme-color" content="#f6f7f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 
-  <title>Emergent Models | Emergent Computing</title>
-  <meta name="title" content="Emergent Models | Emergent Computing" />
-  <meta name="description" content="Emergent Models at Emergent Computing. More detailed material is coming soon." />
-  <meta name="keywords" content="emergent models, cellular automata, dynamical systems, unconventional computing, emergent computing" />
-  <meta name="author" content="Emergent Computing" />
-  <meta name="robots" content="index, follow" />
-  <meta name="language" content="English" />
-  <meta name="revisit-after" content="7 days" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Emergent Computing">
+  <meta property="og:url" content="https://emergentcomputing.org/emergent-models.html">
+  <meta property="og:title" content="Emergent Models — Emergent Computing">
+  <meta property="og:description" content="Machine learning with simple dynamical systems: framework, latent universality, experiments and open questions.">
+  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
+  <meta name="twitter:card" content="summary">
 
-  <link rel="canonical" href="https://emergentcomputing.org/emergent-models.html" />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://emergentcomputing.org/emergent-models.html" />
-  <meta property="og:title" content="Emergent Models | Emergent Computing" />
-  <meta property="og:description" content="Emergent Models at Emergent Computing. More detailed material is coming soon." />
-  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png" />
-  <meta property="og:image:alt" content="Emergent Computing logo" />
-  <meta property="og:site_name" content="Emergent Computing" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="article:author" content="Emergent Computing" />
-  <meta property="article:section" content="Research" />
-  <meta property="article:tag" content="Emergent Models" />
-  <meta property="article:tag" content="Cellular Automata" />
-  <meta property="article:tag" content="Machine Learning" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://emergentcomputing.org/emergent-models.html" />
-  <meta property="twitter:title" content="Emergent Models | Emergent Computing" />
-  <meta property="twitter:description" content="Emergent Models at Emergent Computing. More detailed material is coming soon." />
-  <meta property="twitter:image" content="https://emergentcomputing.org/images/logo.png" />
-  <meta property="twitter:image:alt" content="Emergent Computing logo" />
-
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="apple-touch-icon" href="images/logo.png" />
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -49,170 +29,247 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
-        "@id": "https://emergentcomputing.org/emergent-models.html#webpage",
-        "url": "https://emergentcomputing.org/emergent-models.html",
-        "name": "Emergent Models",
-        "isPartOf": {
-          "@id": "https://emergentcomputing.org/#website"
-        },
-        "about": {
-          "@id": "https://emergentcomputing.org/#organization"
-        }
-      },
-      {
-        "@type": "Article",
+        "@type": "TechArticle",
         "@id": "https://emergentcomputing.org/emergent-models.html#article",
         "headline": "Emergent Models",
-        "description": "Emergent Models at Emergent Computing. More detailed material is coming soon.",
-        "image": "https://emergentcomputing.org/images/logo.png",
-        "author": {
-          "@type": "Organization",
-          "name": "Emergent Computing",
-          "url": "https://emergentcomputing.org"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Emergent Computing",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://emergentcomputing.org/images/logo.png"
-          }
-        },
-        "datePublished": "2024-01-01",
-        "dateModified": "2026-03-11",
-        "mainEntityOfPage": {
-          "@id": "https://emergentcomputing.org/emergent-models.html#webpage"
-        },
-        "about": [
-          "Emergent Models",
-          "Cellular Automata",
-          "Dynamical Systems",
-          "Unconventional Computing"
-        ]
+        "description": "Framework, latent universality, experiments and open questions for Emergent Models: machine-learning models built from simple, local, iterated dynamical systems.",
+        "url": "https://emergentcomputing.org/emergent-models.html",
+        "dateModified": "2026-10-26",
+        "author": { "@type": "ResearchOrganization", "@id": "https://emergentcomputing.org/#organization", "name": "Emergent Computing" },
+        "publisher": { "@id": "https://emergentcomputing.org/#organization" },
+        "isBasedOn": { "@type": "ScholarlyArticle", "@id": "https://arxiv.org/abs/2608.14019", "name": "Emergent Models: Intelligence from Tiny Substrates" },
+        "about": ["Emergent Models", "Cellular automata", "Latent universality", "Neural cellular automata", "Turing machines", "Evolutionary search"]
       },
       {
         "@type": "BreadcrumbList",
-        "@id": "https://emergentcomputing.org/emergent-models.html#breadcrumb",
         "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://emergentcomputing.org/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Emergent Models",
-            "item": "https://emergentcomputing.org/emergent-models.html"
-          }
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://emergentcomputing.org/" },
+          { "@type": "ListItem", "position": 2, "name": "Emergent Models", "item": "https://emergentcomputing.org/emergent-models.html" }
         ]
       }
     ]
   }
   </script>
-
 </head>
-<body class="min-h-screen bg-slate-900 text-white">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <nav class="bg-slate-900/90 backdrop-blur-sm border-b border-slate-800 fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center">
-          <a href="index.html" class="flex items-center gap-3">
-            <div class="logo-container w-10 h-10">
-              <img src="images/logo.png" alt="Emergent Computing logo" class="logo-image">
-            </div>
-            <span class="font-semibold text-lg">Emergent Computing</span>
-          </a>
-        </div>
-
-        <div class="hidden md:flex items-center gap-4 lg:gap-6">
-          <a href="index.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Home</a>
-          <a href="reasoning-models.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Reasoning Models</a>
-          <a href="emergent-models.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Emergent Models</a>
-          <a href="applied-research.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Applied Research</a>
-        </div>
-
-        <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white transition touch-target">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
-
-    <div id="mobileMenu" class="mobile-menu-overlay hidden">
-      <div class="flex flex-col h-full">
-        <div class="flex items-center justify-between p-4 border-b border-slate-800">
-          <div class="flex items-center gap-3">
-            <div class="logo-container w-8 h-8">
-              <img src="images/logo.png" alt="Emergent Computing logo" class="logo-image">
-            </div>
-            <span class="font-semibold">Emergent Computing</span>
-          </div>
-          <button id="mobileMenuClose" class="text-gray-300 hover:text-white transition touch-target">
-            <i data-lucide="x" class="w-6 h-6"></i>
-          </button>
-        </div>
-        <div class="flex flex-col p-4 space-y-4">
-          <a href="index.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Home</a>
-          <a href="reasoning-models.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Reasoning Models</a>
-          <a href="emergent-models.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Emergent Models</a>
-          <a href="applied-research.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Applied Research</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <header class="relative overflow-hidden pt-16 mobile-spacing">
-    <div class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-indigo-800/20"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-24 pb-12 sm:pb-16">
-      <div class="text-center">
-        <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4 sm:mb-6">
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-purple-500">
-            Emergent Models
-          </span>
-        </h1>
-        <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mobile-text">
-          Coming soon
-        </p>
-      </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="28" height="28">Emergent Computing</a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html#research" aria-current="page">Research</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#code">Code</a>
+        <a href="blog/">Writing</a>
+        <a href="index.html#people">People</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main class="py-12 sm:py-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <section class="mb-12 sm:mb-16">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3 justify-center sm:justify-start">
-          <i data-lucide="network" class="text-purple-400 w-6 h-6 sm:w-7 sm:h-7"></i>
-          Emergent Models
-        </h2>
-        <div class="bg-slate-800/50 p-6 sm:p-8 rounded-xl mb-6 sm:mb-8">
-          <p class="text-gray-300 text-base sm:text-lg leading-relaxed mobile-text">
-            More material on Emergent Models will be published here soon.
-          </p>
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">Research · <span class="tag tag-published">published</span></p>
+        <h1>Emergent Models</h1>
+        <p class="lede">A model is a simple dynamical system: a state, a local update rule, a halting condition and a fixed way to write inputs and read outputs. Training searches for the initial state that makes the system compute the task.</p>
+        <nav class="toc" aria-label="On this page">
+          <a href="#summary">Summary</a>
+          <a href="#model">The model</a>
+          <a href="#iteration">Why iteration</a>
+          <a href="#universality">Latent universality</a>
+          <a href="#experiments">Experiments</a>
+          <a href="#grokking">Geometric grokking</a>
+          <a href="#machines">Machines</a>
+          <a href="#nca">Neural CA</a>
+          <a href="#hardware">Hardware</a>
+          <a href="#open">Open questions</a>
+          <a href="#cite">Cite</a>
+        </nav>
+      </header>
+
+      <div class="prose">
+        <h2 id="summary">Summary</h2>
+        <ul>
+          <li>An <b>Emergent Model</b> (EM) is a dynamical system, such as a cellular automaton, equipped with an encoder and a decoder. Prediction means: write the input into the state, iterate a fixed local rule until a halting condition holds, read the output.</li>
+          <li>The learnable object is mainly the <b>initial state</b>, called the program. The rule and parts of the interface can be learned too. Training uses evolutionary search, because the dynamics are recursive, often discrete and not differentiable.</li>
+          <li><b>Latent universality</b>: there are EMs in which the rule and interface are fixed and any partial computable function can be realised by changing only the program. This is an existence result; it says nothing about how hard the program is to find.</li>
+          <li>Experiments use deliberately minimal models (tens to a few hundred parameters). The clearest result: a 140-bit cellular automaton trained on x ≤ 30 computes x + 1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2) exactly up to x = 1000.</li>
+          <li>The framework is foundational. It does not propose a competitive architecture, and several tasks were not learned.</li>
+        </ul>
+        <p class="small muted">Source: G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy, <a href="https://arxiv.org/abs/2608.14019"><i>Emergent Models: Intelligence from Tiny Substrates</i></a>, arXiv:2608.14019, 2026.</p>
+
+        <h2 id="model">The model</h2>
+        <p>An Emergent Model is a tuple <code>M = (S, f, H, E, D, ⊕)</code>: a state space <code>S</code> over a graph of cells, a transition function <code>f</code> (usually local), a halting operator <code>H</code>, an encoder <code>E</code>, a decoder <code>D</code>, and an operator <code>⊕</code> that combines the program with the encoded input.</p>
+      </div>
+
+      <figure class="figure" style="max-width:820px;margin:8px 0 28px">
+        <div class="figure-body">
+          <svg class="diagram" viewBox="0 0 760 150" role="img" aria-label="Inference in an Emergent Model: the input x is encoded, combined with the program p, the rule f is iterated until the halting condition holds, and the decoder reads the output y.">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+              </marker>
+            </defs>
+            <text x="18" y="95">x</text>
+            <line x1="34" y1="90" x2="68" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="70" y="70" width="56" height="40" rx="4"></rect>
+            <text x="98" y="95" text-anchor="middle">E</text>
+            <line x1="126" y1="90" x2="168" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="186" y="8" width="108" height="32" rx="4"></rect>
+            <text x="240" y="29" text-anchor="middle">program p</text>
+            <line x1="240" y1="40" x2="240" y2="68" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="170" y="70" width="140" height="40" rx="4"></rect>
+            <text x="240" y="95" text-anchor="middle">s₀ = p ⊕ E(x)</text>
+            <line x1="310" y1="90" x2="348" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="350" y="70" width="150" height="40" rx="4"></rect>
+            <text x="425" y="95" text-anchor="middle">s ← f(s)</text>
+            <path d="M478 70 C 478 34, 372 34, 372 66" fill="none" stroke="currentColor" marker-end="url(#arrow)"></path>
+            <text x="425" y="28" text-anchor="middle">until H(s) = 1</text>
+            <line x1="500" y1="90" x2="538" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="540" y="70" width="56" height="40" rx="4"></rect>
+            <text x="568" y="95" text-anchor="middle">D</text>
+            <line x1="596" y1="90" x2="634" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <text x="644" y="95">y</text>
+            <text x="18" y="140" class="muted" fill="currentColor" style="opacity:.65">microsteps t: internal computation time, adaptive per input</text>
+          </svg>
         </div>
-      </section>
+      </figure>
+
+      <div class="prose">
+        <p>Inference is <code>y = D(f<sup>T</sup>(p ⊕ E(x)))</code>, where <code>T</code> is the first step at which <code>H</code> fires. If it never fires, the output is undefined. The state provides memory; repeated application of <code>f</code> provides computation time.</p>
+        <p>Parameters fall into two groups. <b>Soft parameters</b> are the program: they live in the state and can change during inference. <b>Hard parameters</b> (rule, halting condition, interface) play the role of hardware: optimised during training, fixed during inference.</p>
+        <p>For streams of inputs, such as a control loop, a <b>retention operator</b> <code>R</code> turns the final state of one prediction into the program of the next: <code>p<sub>i+1</sub> = R(s<sub>T,i</sub>)</code>. The input stream can then change the computation itself, which is how the adaptive experiments below work.</p>
+
+        <h2 id="iteration">Why iteration</h2>
+        <p>The relevant notion of capacity here is <b>global expressivity</b>: which functions a model family can represent over their whole, possibly unbounded domain, not only on a compact region. A model that represents the generating rule extrapolates by construction; a local fit does not.</p>
+        <p>Feed-forward networks are limited in this sense. Universal approximation holds on compact domains; outside them, sigmoidal networks tend to constants and ReLU networks become linear, so functions like sin(x), eˣ or x mod 4 cannot be represented globally without task-specific engineering. Iterated systems with unbounded memory and time can be Turing-complete, which is the maximal notion of global expressivity in the discrete setting. Universality says nothing about trainability, but it removes a hard ceiling.</p>
+
+        <h2 id="universality">Latent universality</h2>
+        <p><b>Theorem (latent universality).</b> There exists an Emergent Model with a fixed rule, a fixed halting condition and a fixed interface on binary strings such that every partial computable function <code>g : {0,1}* ⇀ {0,1}*</code> is computed by some finite program state <code>p</code>.</p>
+        <p>The proof uses a universal Turing machine whose program and input occupy separate regions of the tape, so the initial state factors as <code>p ⊕ E(x)</code> and the encoder knows nothing about the program. A lemma extends the result to Conway's Game of Life through Rendell's universal construction.</p>
+        <p>The split matters for learning. The fixed interface defines only the syntax: where data is written and read. The program carries the semantics: which function is computed. Because the target function is unknown in advance, everything task-specific must live in the program, and search can vary programs without touching the interface.</p>
+        <p><b>Searchability.</b> Programs are finite strings, so enumeration or random sampling eventually finds one that computes any given function. This is existence only: the search can be arbitrarily long. The experiments do not realise latent universality and none of their claims depend on the theorem.</p>
+
+        <h2 id="experiments">Experiments</h2>
+        <p>A zoo of minimal instances, each trained with population-based genetic algorithms. Results are representative runs, not multi-seed statistics.</p>
+      </div>
+
+      <div class="table-scroll" style="max-width:1000px">
+        <table class="data">
+          <thead>
+            <tr><th>Model</th><th>Substrate</th><th>Searched</th><th>Task</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>EM43</td><td>1D cellular automaton, 4 values, radius 1</td><td>program + rule: 70 parameters, 140 bits</td><td>x + 1, 2x, x mod 4, round(x/3), x·(1 + x mod 2)</td><td>Trained on [0, 30]: 100% exact on [30, 1000], every run. Two-input a·b not learned (&lt; 10% test).</td></tr>
+            <tr><td>GoL-EM</td><td>Game of Life, rule fixed</td><td>positions of 2 gliders</td><td>x − 2 … x + 5</td><td>Trained on about 10 inputs: 100% exact on inputs up to 200. Even/odd conditional not learned (50% test). Random search performs about as well as the GA.</td></tr>
+            <tr><td>GoL-EM</td><td>Game of Life, rule fixed</td><td>gliders + sparse cells</td><td>CartPole (max 500)</td><td>Return 317 ± 122 (random ≈ 20). In 54.5% of steps the dynamics did not settle within the time budget.</td></tr>
+            <tr><td>CEM1D</td><td>continuous 1D lattice, 19 cells</td><td>3 coefficients; state inherited</td><td>CartPole (max 800)</td><td>Return 735 ± 107 over 1000 new rollouts. Uses pole angle well, cart position poorly.</td></tr>
+            <tr><td>CEM2D</td><td>8 × 8 field, activation + memory</td><td>35 hard, 128 soft parameters</td><td>Meta-Life: food/poison phases</td><td>Meta-score 0.71 (random 0, perfect 1). A dense memory RNN baseline reached 0.82.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h2 id="grokking">Geometric grokking</h2>
+        <p>In EM43 runs that generalise, the computation is visible as a regular space-time geometry that keeps the same shape as the input grows. For x mod 4, signals from the program region repeatedly shift the red marker until blue cells become the majority and the machine halts with the marker at the answer. The paper calls this <b>geometric grokking</b>. Whether it persists on harder tasks, or is partly an artefact of these tasks and this interface, is open.</p>
+      </div>
+
+      <div class="figure-row" style="margin:8px 0 12px">
+        <figure class="figure" data-em43 data-task="mod4" data-x="15" data-max-height="300">
+          <canvas role="img" aria-label="EM43 computing 15 mod 4"></canvas>
+          <div class="readout" data-em43-readout></div>
+        </figure>
+        <figure class="figure" data-em43 data-task="mod4" data-x="30" data-max-height="300">
+          <canvas role="img" aria-label="EM43 computing 30 mod 4"></canvas>
+          <div class="readout" data-em43-readout></div>
+        </figure>
+        <figure class="figure" data-em43 data-task="mod4" data-x="70" data-max-height="300">
+          <canvas role="img" aria-label="EM43 computing 70 mod 4"></canvas>
+          <div class="readout" data-em43-readout></div>
+        </figure>
+      </div>
+      <p class="small muted" style="max-width:var(--measure)">The same learned EM43 model on x = 15, 30 and 70. Each diagram is computed in your browser from the published rule; time runs downward. Scales differ between panels.</p>
+
+      <div class="prose">
+        <h2 id="machines">Machines with a fixed interface <span class="tag tag-progress">in progress</span></h2>
+        <p>The theorem guarantees that latent-universal models exist. These projects build concrete, small ones, to study how searchable their programs are.</p>
+        <ul>
+          <li><b><a href="https://github.com/EmergentComputing/LUTM-1">LUTM-1</a></b>: a one-tape Turing machine with 150 states, 16 symbols and 2,384 transitions. Every run starts from the tape <code>p#x</code>; the output is the bits right of <code>#</code> at halting. Verified programs include identity (5 bits), +1 (176 bits), ×2 (114 bits) and squaring (4,605 bits), all independent of input length. Simulators in Python, NumPy and CUDA, an island GA and a program miner.</li>
+          <li><b><a href="https://github.com/EmergentComputing/LUTM-6">LUTM-6</a></b>: two tapes, four symbols, nine running states, 144 transitions. The program tape is read-only; input bits are written as fixed pairs, independent of the program. Known programs for NOT, reverse, increment and square.</li>
+          <li><b>LU-A</b>: a language of ten operations on one data tape. The <a href="https://bocchesegiacomo.github.io/lu-sim/">LUTM-6 and LU-A simulators</a> run both side by side; every listed program is checked exact on all inputs up to 8 bits and on random 16-, 32- and 64-bit inputs.</li>
+        </ul>
+        <p><b>Status.</b> For both machines, a constructive argument for fixed-interface universality is written out but not formally verified; tests give finite evidence, not proof. The open question is search: how program length, run time and fitness landscape interact.</p>
+
+        <h2 id="nca">Neural cellular automata <span class="tag tag-progress">in progress</span></h2>
+        <p>Here the rule is a small neural network shared by every cell, trained by gradient descent, and the program is a learned task-specific state in dedicated channels. One rule, many programs: a differentiable route to the fixed-rule, variable-program regime.</p>
+        <p><b><a href="https://github.com/BoccheseGiacomo/ncpu-em-1d">NCPU-EM-1D</a></b> (<a href="https://bocchesegiacomo.github.io/ncpu-em-1d-demo/">demo</a>) learns seven string tasks with one rule (10,150 parameters, 13 channels). Trained on strings up to 16 bits; semantic accuracy beyond that, synchronous updates:</p>
+      </div>
+
+      <div class="table-scroll" style="max-width:680px">
+        <table class="data">
+          <thead><tr><th>Task</th><th>19 bits</th><th>21 bits</th><th>26 bits</th></tr></thead>
+          <tbody>
+            <tr><td>copy, shift left, shift right, Gray encode</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td></tr>
+            <tr><td>increment</td><td class="num">99.8%</td><td class="num">100%</td><td class="num">99.8%</td></tr>
+            <tr><td>prefix XOR</td><td class="num">95.9%</td><td class="num">85.4%</td><td class="num">31.4%</td></tr>
+            <tr><td>reverse</td><td class="num">99.7%</td><td class="num">87.9%</td><td class="num">1.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <p>The two tasks that fail are the two that need information carried across the whole input. With a local rule, information moves at bounded speed, so this is the expected failure mode, and a useful one to study.</p>
+        <p>Related code: <a href="https://github.com/BoccheseGiacomo/ncpu-em-2d">NCPU-EM-2D</a> (program tiles on a 2D grid), <a href="https://github.com/BoccheseGiacomo/ncpu-computer">ncpu-computer</a> (single-task baselines), <a href="https://github.com/BoccheseGiacomo/ncpu-simplified">ncpu-simplified</a> (binary addition with single-cell inputs and outputs).</p>
+        <p class="small muted">This line builds on NCPU, <a href="https://ncpu.pages.dev/"><i>Self-organized boolean computation</i></a> by Iliya Zhechev (Sofia University) and Piotr Walas (Warsaw University of Technology), ALIFE 2026 (<a href="https://github.com/ichko/ncpu">code</a>), and on Béna and Faldor, <a href="https://arxiv.org/abs/2505.13058"><i>A Path to Universal Neural Cellular Automata</i></a>.</p>
+
+        <h2 id="hardware">Parallel and analog substrates <span class="tag tag-hypothesis">hypothesis</span></h2>
+        <p>Local rules suit parallel hardware: each cell needs only its neighbours. Three directions, none tested yet.</p>
+        <p><b>Search on GPUs.</b> Population-based search evaluates many candidate programs on the same inputs, which is a batch of independent simulations. LUTM-1 and LUTM-6 already run candidates in parallel on CUDA. Bit-packed cellular automata (two bits per EM43 cell) would put dozens of cells into one machine word.</p>
+        <p><b>CA-like hardware for arithmetic.</b> The direction is hardware in which operations such as multiplication cost constant work per cell per step, with no instruction stream. Locality sets a floor: an output that depends on inputs d cells away needs at least d / r steps, with r the rule radius. For n-bit multiplication on a k-dimensional local array the latency therefore grows at least like n<sup>1/k</sup>. What can be constant is work per cell and throughput: a pipelined 1D array can emit one product bit per step (Atrubin, 1965). Constant latency needs non-local summation, such as threshold gates of unbounded fan-in or physical summation of currents or light. That trades time for precision and fan-in. Which regime is worth building, and whether search can find the rules, is open.</p>
+        <p><b>Analog media.</b> CEM1D and CEM2D are continuous substrates. With real-valued cells the same framework could describe analog computing, but the paper gives no guarantee there. The deciding property for physical implementation is tolerance to noise; NCPU models trained with random asynchronous updates are a first step toward measuring it.</p>
+
+        <h2 id="open">Open questions</h2>
+        <ol>
+          <li>Can a rule be co-evolved across many tasks so that, once frozen, new tasks are solved by changing only the program?</li>
+          <li>Which search methods work on landscapes where similar programs have unrelated fitness, as in Game of Life?</li>
+          <li>Does the ratio of parameters to computation time govern a trade-off between generalisation and trainability? (See <a href="reasoning-models.html">Reasoning models</a>.)</li>
+          <li>Is geometric grokking measurable, for example by the compressibility of space-time diagrams, and does it predict extrapolation?</li>
+          <li>Does inherited state in adaptive controllers carry function, or do the hard parameters merely co-adapt to it? The paper proposes a two-run test.</li>
+        </ol>
+
+        <h2 id="cite">Cite</h2>
+      </div>
+      <div class="bibtex-wrap" style="max-width:var(--measure);margin-bottom:64px">
+        <button class="copy-btn" type="button" data-copy="bibtex-em">copy</button>
+<pre class="bibtex" id="bibtex-em">@misc{bocchese2026emergent,
+  title         = {Emergent Models: Intelligence from Tiny Substrates},
+  author        = {Bocchese, Giacomo and Giacobbo, Nicola and Guichard, Etienne
+                   and Wiles, James and Devireddy, Akshaj},
+  year          = {2026},
+  eprint        = {2608.14019},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.NE},
+  url           = {https://arxiv.org/abs/2608.14019}
+}</pre>
+      </div>
     </div>
   </main>
 
-  <footer class="py-6 sm:py-8 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="logo-container w-6 h-6 sm:w-8 sm:h-8">
-            <img src="images/logo.png" alt="Emergent Computing logo" class="logo-image">
-          </div>
-          <span class="font-semibold text-sm sm:text-base">Emergent Computing</span>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs sm:text-sm text-center">
-          <p class="text-gray-500">&copy; <span id="currentYear"></span> Emergent Computing. All rights reserved.</p>
-          <a href="index.html" class="text-purple-400 hover:text-purple-300 transition touch-target">Back to Home</a>
-        </div>
-      </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="reasoning-models.html">Reasoning models</a>
+        <a href="applied-research.html">Applied research</a>
+        <a href="blog/">Writing</a>
+        <a href="https://github.com/EmergentComputing">GitHub</a>
+      </nav>
+      <p>© <span data-year>2026</span> Emergent Computing · This site sets no cookies and runs no analytics.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

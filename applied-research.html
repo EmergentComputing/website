@@ -1,218 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Applied research — Emergent Computing</title>
+  <meta name="description" content="Research collaborations on problems suited to small iterated models, program search and evolutionary optimisation, and how Emergent Computing runs them.">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/applied-research.html">
+  <meta name="theme-color" content="#f6f7f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
 
-  <title>Applied Research | Emergent Computing</title>
-  <meta name="title" content="Applied Research | Emergent Computing" />
-  <meta name="description" content="Applied Research at Emergent Computing. More detailed material is coming soon." />
-  <meta name="keywords" content="applied research, AI implementation, reasoning models, machine learning deployment, emergent computing" />
-  <meta name="author" content="Emergent Computing" />
-  <meta name="robots" content="index, follow" />
-  <meta name="language" content="English" />
-  <meta name="revisit-after" content="7 days" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Emergent Computing">
+  <meta property="og:url" content="https://emergentcomputing.org/applied-research.html">
+  <meta property="og:title" content="Applied research — Emergent Computing">
+  <meta property="og:description" content="Collaborations on problems suited to small iterated models, program search and evolutionary optimisation.">
+  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
+  <meta name="twitter:card" content="summary">
 
-  <link rel="canonical" href="https://emergentcomputing.org/applied-research.html" />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://emergentcomputing.org/applied-research.html" />
-  <meta property="og:title" content="Applied Research | Emergent Computing" />
-  <meta property="og:description" content="Applied Research at Emergent Computing. More detailed material is coming soon." />
-  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png" />
-  <meta property="og:image:alt" content="Emergent Computing logo" />
-  <meta property="og:site_name" content="Emergent Computing" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="article:author" content="Emergent Computing" />
-  <meta property="article:section" content="Research" />
-  <meta property="article:tag" content="Applied Research" />
-  <meta property="article:tag" content="AI Implementation" />
-  <meta property="article:tag" content="Reasoning Models" />
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://emergentcomputing.org/applied-research.html" />
-  <meta property="twitter:title" content="Applied Research | Emergent Computing" />
-  <meta property="twitter:description" content="Applied Research at Emergent Computing. More detailed material is coming soon." />
-  <meta property="twitter:image" content="https://emergentcomputing.org/images/logo.png" />
-  <meta property="twitter:image:alt" content="Emergent Computing logo" />
-
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="apple-touch-icon" href="images/logo.png" />
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": "https://emergentcomputing.org/applied-research.html#webpage",
-        "url": "https://emergentcomputing.org/applied-research.html",
-        "name": "Applied Research",
-        "isPartOf": {
-          "@id": "https://emergentcomputing.org/#website"
-        },
-        "about": {
-          "@id": "https://emergentcomputing.org/#organization"
-        }
-      },
-      {
-        "@type": "Article",
-        "@id": "https://emergentcomputing.org/applied-research.html#article",
-        "headline": "Applied Research",
-        "description": "Applied Research at Emergent Computing. More detailed material is coming soon.",
-        "image": "https://emergentcomputing.org/images/logo.png",
-        "author": {
-          "@type": "Organization",
-          "name": "Emergent Computing",
-          "url": "https://emergentcomputing.org"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Emergent Computing",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://emergentcomputing.org/images/logo.png"
-          }
-        },
-        "datePublished": "2024-01-01",
-        "dateModified": "2026-03-11",
-        "mainEntityOfPage": {
-          "@id": "https://emergentcomputing.org/applied-research.html#webpage"
-        },
-        "about": [
-          "Applied Research",
-          "Reasoning Models",
-          "Artificial Intelligence",
-          "Intelligent Systems"
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://emergentcomputing.org/applied-research.html#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://emergentcomputing.org/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Applied Research",
-            "item": "https://emergentcomputing.org/applied-research.html"
-          }
-        ]
-      }
-    ]
+    "@type": "WebPage",
+    "@id": "https://emergentcomputing.org/applied-research.html#webpage",
+    "name": "Applied research",
+    "url": "https://emergentcomputing.org/applied-research.html",
+    "isPartOf": { "@id": "https://emergentcomputing.org/#website" },
+    "about": { "@id": "https://emergentcomputing.org/#organization" }
   }
   </script>
-
 </head>
-<body class="min-h-screen bg-slate-900 text-white">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <nav class="bg-slate-900/90 backdrop-blur-sm border-b border-slate-800 fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center">
-          <a href="index.html" class="flex items-center gap-3">
-            <div class="logo-container w-10 h-10">
-              <img src="images/logo.png" alt="Emergent Computing logo" class="logo-image">
-            </div>
-            <span class="font-semibold text-lg">Emergent Computing</span>
-          </a>
-        </div>
-
-        <div class="hidden md:flex items-center gap-4 lg:gap-6">
-          <a href="index.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Home</a>
-          <a href="reasoning-models.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Reasoning Models</a>
-          <a href="emergent-models.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Emergent Models</a>
-          <a href="applied-research.html" class="text-gray-300 hover:text-white transition text-sm lg:text-base">Applied Research</a>
-        </div>
-
-        <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white transition touch-target">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
-      </div>
-    </div>
-
-    <div id="mobileMenu" class="mobile-menu-overlay hidden">
-      <div class="flex flex-col h-full">
-        <div class="flex items-center justify-between p-4 border-b border-slate-800">
-          <div class="flex items-center gap-3">
-            <div class="logo-container w-8 h-8">
-              <img src="images/logo.png" alt="Emergent Computing logo" class="logo-image">
-            </div>
-            <span class="font-semibold">Emergent Computing</span>
-          </div>
-          <button id="mobileMenuClose" class="text-gray-300 hover:text-white transition touch-target">
-            <i data-lucide="x" class="w-6 h-6"></i>
-          </button>
-        </div>
-        <div class="flex flex-col p-4 space-y-4">
-          <a href="index.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Home</a>
-          <a href="reasoning-models.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Reasoning Models</a>
-          <a href="emergent-models.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Emergent Models</a>
-          <a href="applied-research.html" class="text-xl text-gray-300 hover:text-white transition touch-target py-2">Applied Research</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-  <header class="relative overflow-hidden pt-16 mobile-spacing">
-    <div class="absolute inset-0 bg-gradient-to-br from-green-600/20 to-teal-800/20"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-24 pb-12 sm:pb-16">
-      <div class="text-center">
-        <h1 class="hero-title text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide mb-4 sm:mb-6">
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-green-500">
-            Applied Research
-          </span>
-        </h1>
-        <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mobile-text">
-          Coming soon
-        </p>
-      </div>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="28" height="28">Emergent Computing</a>
+      <nav class="nav" aria-label="Main">
+        <a href="index.html#research" aria-current="page">Research</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#code">Code</a>
+        <a href="blog/">Writing</a>
+        <a href="index.html#people">People</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <main class="py-12 sm:py-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <section class="mb-12 sm:mb-16">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3 justify-center sm:justify-start">
-          <i data-lucide="flask-conical" class="text-green-400 w-6 h-6 sm:w-7 sm:h-7"></i>
-          Applied Research
-        </h2>
-        <div class="bg-slate-800/50 p-6 sm:p-8 rounded-xl mb-6 sm:mb-8">
-          <p class="text-gray-300 text-base sm:text-lg leading-relaxed mobile-text">
-            More material on Applied Research will be published here soon.
-          </p>
-        </div>
-      </section>
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="eyebrow">Research · <span class="tag">collaboration</span></p>
+        <h1>Applied research</h1>
+        <p class="lede">We take on joint projects when a problem is a good test of our methods and the results can be published.</p>
+      </header>
+
+      <div class="prose">
+        <h2>Problems that fit</h2>
+        <ul>
+          <li><b>Exact procedures from few examples.</b> Tasks where the answer must stay correct outside the range of the data, and a small rule is plausible.</li>
+          <li><b>Control with very small models.</b> Controllers with tens to hundreds of parameters, where memory, power or interpretability matter more than peak performance.</li>
+          <li><b>Optimising non-differentiable systems.</b> Simulators, discrete structures or long recurrent loops where gradients are unavailable or unreliable, and evolutionary or other black-box search is the realistic option.</li>
+          <li><b>Parallel simulation.</b> Moving cellular-automaton or population-based workloads onto GPUs.</li>
+        </ul>
+
+        <h2>How we work</h2>
+        <ol>
+          <li>State a question that the project can answer either way.</li>
+          <li>Run a conventional baseline first. If a standard method solves the problem, that is the result.</li>
+          <li>Publish code and report negative results.</li>
+        </ol>
+        <p>Our current methods are research tools, not products. They are slower to train than standard neural networks and their advantages are still being measured; see the limitations on the <a href="emergent-models.html#experiments">Emergent Models</a> page.</p>
+
+        <h2>Contact</h2>
+        <p>Describe the problem, the data, and what a successful outcome would look like: <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>.</p>
+      </div>
+      <div style="height:64px"></div>
     </div>
   </main>
 
-  <footer class="py-6 sm:py-8 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="logo-container w-6 h-6 sm:w-8 sm:h-8">
-            <img src="images/logo.png" alt="Emergent Computing logo" class="logo-image">
-          </div>
-          <span class="font-semibold text-sm sm:text-base">Emergent Computing</span>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs sm:text-sm text-center">
-          <p class="text-gray-500">&copy; <span id="currentYear"></span> Emergent Computing. All rights reserved.</p>
-          <a href="index.html" class="text-green-400 hover:text-green-300 transition touch-target">Back to Home</a>
-        </div>
-      </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <a href="index.html">Home</a>
+        <a href="emergent-models.html">Emergent Models</a>
+        <a href="reasoning-models.html">Reasoning models</a>
+        <a href="blog/">Writing</a>
+        <a href="https://github.com/EmergentComputing">GitHub</a>
+      </nav>
+      <p>© <span data-year>2026</span> Emergent Computing · This site sets no cookies and runs no analytics.</p>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
