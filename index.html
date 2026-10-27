@@ -230,14 +230,14 @@
         </div>
 
         <div class="em-result">
-          <h3>EM43: 140 bits, exact far beyond the training range</h3>
+          <h3>EM43: a model that generalises simple arithmetic from tiny datasets</h3>
           <dl class="facts">
             <div><dt>parameters</dt><dd>70 · 140 bits</dd></div>
             <div><dt>trained on</dt><dd>x ≤ 30</dd></div>
-            <div><dt>exact on every input tested</dt><dd>x ≤ 1000</dd></div>
-            <div><dt>functions learned, every run</dt><dd>5 of 5</dd></div>
+            <div><dt>exact on every input</dt><dd>x ≤ 1000</dd></div>
+            <div><dt>exact on samples up to</dt><dd>50 000</dd></div>
           </dl>
-          <p>EM43 learned x + 1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2). A feed-forward network cannot represent x mod 4 or x·(1 + x mod 2) on all of ℕ. The models that work show a regular space-time geometry that scales with the input instead of changing: below, the same x mod 4 model at three input sizes. The paper calls this <i>geometric grokking</i>. Two-input multiplication a·b was not learned.</p>
+          <p>EM43 learned x + 1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2). We observed no error on any input tested: every x up to 1000, and sample inputs between 10 000 and 50 000. x mod 4 is a discrete sine: it repeats 0, 1, 2, 3 forever. x·(1 + x mod 2) is a discrete sine with growing amplitude. Like sin x above, neither can be represented by a fixed-depth feed-forward network on all of ℕ. The models that work show a regular space-time geometry that scales with the input instead of changing: below, the same x mod 4 model at three input sizes. The paper calls this <i>geometric grokking</i>. Two-input multiplication a·b was not learned.</p>
           <div class="multiples">
             <div><canvas data-viz="em43" data-task="mod4" data-x="15" role="img" aria-label="EM43 computing 15 mod 4"></canvas><p class="fig-cap">x = 15 → 3 · in the training range</p></div>
             <div><canvas data-viz="em43" data-task="mod4" data-x="47" role="img" aria-label="EM43 computing 47 mod 4"></canvas><p class="fig-cap">x = 47 → 3 · outside</p></div>
