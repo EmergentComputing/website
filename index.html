@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;1,400&amp;text=spxEtfTHyDmin01%2B%3D%28%29%7B%7D%3A&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;1,400&amp;text=%28%29%2B%2C.%2F0123456789%3A%3DABCDEFGHIJKLMNOPQRSTUVWXYZ%5B%5Dabcdefghijklmnopqrstuvwxyz%7B%7D%CF%80%E2%84%95%E2%89%A4%E2%8B%85&amp;display=swap">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -220,7 +220,7 @@
         <div class="em-block">
           <div>
             <h3>Why iterate</h3>
-            <p>A feed-forward network has fixed depth: it does the same amount of computation for every input. Trained on sin x over [0, 4π], it fits the data and fails outside it (red). This is a limit of the architecture, not of training: fixed-depth networks with common activations cannot approximate functions such as eˣ or sin x on an unbounded domain, so they can only interpolate the training data (<a href="https://doi.org/10.1016/j.neunet.2024.106181">van Nuland, 2024</a>). A recurrent model can instead learn a procedure that generates the function, and extrapolate over open ranges (blue). Under suitable conditions recurrent networks are Turing complete (<a href="https://doi.org/10.1006/jcss.1995.1013">Siegelmann and Sontag, 1995</a>), so a model exists for every computable function on an unbounded domain.</p>
+            <p>A feed-forward network has fixed depth: it does the same amount of computation for every input. Trained on <span class="m">sin <i>x</i></span> over <span class="m">[0, 4π]</span>, it fits the data and fails outside it (red). This is a limit of the architecture, not of training: fixed-depth networks with common activations cannot approximate functions such as <span class="m">e<sup><i>x</i></sup></span> or <span class="m">sin <i>x</i></span> on an unbounded domain, so they can only interpolate the training data (<a href="https://doi.org/10.1016/j.neunet.2024.106181">van Nuland, 2024</a>). A recurrent model can instead learn a procedure that generates the function, and extrapolate over open ranges (blue). Under suitable conditions recurrent networks are Turing complete (<a href="https://doi.org/10.1006/jcss.1995.1013">Siegelmann and Sontag, 1995</a>), so a model exists for every computable function on an unbounded domain.</p>
             <p>Recurrence is therefore a basic requirement for models that must generalise over open ranges. An Emergent Model keeps iterating until a halting signal: variable-depth computation is its default mode.</p>
           </div>
           <figure class="em-fig">
@@ -233,11 +233,10 @@
           <h3>EM43: a model that generalises simple arithmetic from tiny datasets</h3>
           <dl class="facts">
             <div><dt>parameters</dt><dd>70 · 140 bits</dd></div>
-            <div><dt>trained on</dt><dd>x ≤ 30</dd></div>
-            <div><dt>exact on every input</dt><dd>x ≤ 1000</dd></div>
-            <div><dt>exact on samples up to</dt><dd>50 000</dd></div>
+            <div><dt>trained on</dt><dd><span class="m"><i>x</i> ≤ 30</span></dd></div>
+            <div><dt>exact on every input</dt><dd><span class="m"><i>x</i> ≤ 1000</span></dd></div>
           </dl>
-          <p>EM43 learned x + 1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2). We observed no error on any input tested: every x up to 1000, and sample inputs between 10 000 and 50 000. x mod 4 is a discrete sine: it repeats 0, 1, 2, 3 forever. x·(1 + x mod 2) is a discrete sine with growing amplitude. Like sin x above, neither can be represented by a fixed-depth feed-forward network on all of ℕ. The models that work show a regular space-time geometry that scales with the input instead of changing: below, the same x mod 4 model at three input sizes. The paper calls this <i>geometric grokking</i>. Two-input multiplication a·b was not learned.</p>
+          <p>EM43 learned <span class="m"><i>x</i> + 1</span>, <span class="m">2<i>x</i></span>, <span class="m"><i>x</i> mod 4</span>, <span class="m">round(<i>x</i>/3)</span> and <span class="m"><i>x</i>⋅(1 + <i>x</i> mod 2)</span>. We observed no error on any input tested: every <span class="m"><i>x</i></span> up to 1000, and sample inputs between 10 000 and 50 000. <span class="m"><i>x</i> mod 4</span> is a discrete sine: it repeats 0, 1, 2, 3 forever. <span class="m"><i>x</i>⋅(1 + <i>x</i> mod 2)</span> is a discrete sine with growing amplitude. Like <span class="m">sin <i>x</i></span> above, neither can be represented by a fixed-depth feed-forward network on all of <span class="m">ℕ</span>. The models that work show a regular space-time geometry that scales with the input instead of changing: below, the same <span class="m"><i>x</i> mod 4</span> model at three input sizes. The paper calls this <i>geometric grokking</i>. Two-input multiplication <span class="m"><i>a</i>⋅<i>b</i></span> was not learned.</p>
           <div class="multiples">
             <div><canvas data-viz="em43" data-task="mod4" data-x="15" role="img" aria-label="EM43 computing 15 mod 4"></canvas><p class="fig-cap">x = 15 → 3 · in the training range</p></div>
             <div><canvas data-viz="em43" data-task="mod4" data-x="47" role="img" aria-label="EM43 computing 47 mod 4"></canvas><p class="fig-cap">x = 47 → 3 · outside</p></div>
