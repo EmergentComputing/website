@@ -193,18 +193,21 @@
 
     // CEM2D fast field after food and after poison; ports outlined, phase cell circled.
     cem2d(cv, c) {
-      const { ctx, w, h } = VZ.fit(cv), D = VZ.CEM2D, col = diverging(c);
+      const { ctx, w, h } = VZ.fit(cv), D = VZ.CEM2D, col = diverging(c), cm = cv.dataset.fields === "cm";
       ctx.fillStyle = c.bg; ctx.fillRect(0, 0, w, h);
       const gap = 30, s = Math.min((w - gap - 24) / 16, (h - 40) / 8), ox0 = (w - 16 * s - gap) / 2, oy = 8;
-      [["after food", D.food], ["after poison", D.poison]].forEach(([name, F], k) => {
-        const ox = ox0 + k * (8 * s + gap);
-        for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) { ctx.fillStyle = col(F[i][j], 3.6); ctx.fillRect(ox + j * s + 0.5, oy + i * s + 0.5, s - 1, s - 1); }
+      const panels = cm ? [["c · fast activation", D.c], ["m · slow memory", D.m]] : [["after food", D.food], ["after poison", D.poison]];
+      panels.forEach(([name, F], k) => {
+        const ox = ox0 + k * (8 * s + gap), vmax = cm ? Math.max(...F.flat().map(Math.abs)) : 3.6;
+        for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) { ctx.fillStyle = col(F[i][j], vmax); ctx.fillRect(ox + j * s + 0.5, oy + i * s + 0.5, s - 1, s - 1); }
         for (const [p, [i, j]] of Object.entries(D.ports)) {
           ctx.strokeStyle = p[0] === "I" ? c.ink : c.green; ctx.lineWidth = 1.5; ctx.strokeRect(ox + j * s + 2, oy + i * s + 2, s - 4, s - 4);
           if (s > 22) text(ctx, p, ox + j * s + s / 2, oy + i * s + s / 2 + 4, p[0] === "I" ? c.ink : c.green, "center", `${Math.round(s * 0.3)}px ${MONO}`);
         }
-        const [mi, mj] = D.memory;
-        ctx.strokeStyle = c.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(ox + (mj + 0.5) * s, oy + (mi + 0.5) * s, s * 0.62, 0, 7); ctx.stroke();
+        if (!cm) {
+          const [mi, mj] = D.memory;
+          ctx.strokeStyle = c.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(ox + (mj + 0.5) * s, oy + (mi + 0.5) * s, s * 0.62, 0, 7); ctx.stroke();
+        }
         text(ctx, name, ox, oy + 8 * s + 20, c.ink2);
       });
     },
