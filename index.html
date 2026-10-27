@@ -197,7 +197,10 @@
       <div class="wrap">
         <p class="kicker">Our main work</p>
         <h2>Emergent Models</h2>
-        <p class="intro">An Emergent Model is a machine-learning model built from a simple dynamical system, such as a cellular automaton. There are no layers: one small local rule updates every cell, step after step, and the input, the program and the answer are all patterns in the same state.</p>
+        <div class="intro">
+          <p>An Emergent Model is a machine-learning model built from a simple dynamical system, such as a cellular automaton. Complex computation emerges from iterating a simple local function over a hidden state many times. The state itself decides when the computation stops: a halting function reads it at every step, so the number of steps adapts to the input (adaptive computation time).</p>
+          <p><b>EM43</b> is a particular instance, built from a one-dimensional cellular automaton with 4 cell states. The figure shows it computing 2x for x = 9.</p>
+        </div>
 
         <div class="em-how" data-phases>
           <figure class="em-fig">
@@ -211,17 +214,17 @@
             <li data-phase="4"><h3>Decode</h3><p class="formula">y = D(s<sub>T</sub>)</p><p>The output is read from the final state. In EM43, y is the distance of the rightmost red cell from the origin.</p></li>
           </ol>
         </div>
-        <p class="training-note"><b>Training</b> searches for the program, and optionally the rule, with a genetic algorithm. Only the decoded output is scored; the dynamics in between are never supervised.</p>
+        <p class="training-note"><b>Training.</b> In EM43, a genetic algorithm searches for the program, a finite portion of the initial state, and optionally the rule. Only the decoded output is scored; the dynamics in between are never supervised.</p>
 
         <div class="em-block">
           <div>
             <h3>Why iterate</h3>
-            <p>A feed-forward network computes a function of fixed depth. Trained on sin x over [0, 4π], it fits the data and fails outside it (red): nothing in the model represents the rule that generated the data. The same network applied inside a loop that reduces x by 2π until x &lt; 2π is correct everywhere (blue).</p>
-            <p>Here the loop is written by hand. In an Emergent Model, computation time is part of the model: the number of steps depends on the input, and training decides how they are used. This is the property we expect to matter for generalisation beyond the training range.</p>
+            <p>A feed-forward network has fixed depth: it does the same amount of computation for every input. Trained on sin x over [0, 4π], it fits the data and fails outside it (red). This is a limit of the architecture, not of training: on an unbounded domain, fixed-depth networks with bounded activations such as the sigmoid can uniformly approximate only a restricted class of functions, and periodic functions are not in it (<a href="https://doi.org/10.1016/j.neunet.2024.106181">van Nuland, 2024</a>). A recurrent model can instead reduce x by 2π until x &lt; 2π, and is correct everywhere (blue).</p>
+            <p>Recurrence is therefore a basic requirement for models that must generalise over open ranges. In the figure the loop is written by hand. In an Emergent Model it is part of the model: the halting function sets the number of steps for each input, and training decides how they are used.</p>
           </div>
           <figure class="em-fig">
-            <canvas data-viz="sine" role="img" aria-label="A sigmoid network trained on sin x fits the training range and diverges outside it; the same network inside a loop matches sin x everywhere"></canvas>
-            <figcaption>Red: sigmoid MLP (1–32–32–1) trained on sin x for 0 ≤ x ≤ 4π. Blue: the same network inside the loop x ← x − 2π. Dashed: sin x.</figcaption>
+            <canvas data-viz="sine" role="img" aria-label="A sigmoid network trained on sin x fits the training range and diverges outside it; a recurrent version that first reduces x by 2π matches sin x everywhere"></canvas>
+            <figcaption>Red: sigmoid MLP (1–32–32–1) trained on sin x for 0 ≤ x ≤ 4π. Blue: recurrent version, x ← x − 2π until x &lt; 2π, then the network. Dashed: sin x.</figcaption>
           </figure>
         </div>
 
