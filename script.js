@@ -73,6 +73,17 @@
     ctx.lineTo(x2 - hd * Math.cos(a + 0.45), y2 - hd * Math.sin(a + 0.45)); ctx.fill();
   }
   // Signed value -> colour: red positive, blue negative, background at zero.
+  // Horizontal colour bar for diverging(c) over [-vmax, vmax], with end and zero labels.
+  function colorbar(ctx, c, col, x, y, w, vmax) {
+    const n = 64, fmt = (v) => String(Math.round(v * 10) / 10);
+    for (let i = 0; i < n; i++) { ctx.fillStyle = col(-vmax + (2 * vmax * (i + 0.5)) / n, vmax); ctx.fillRect(x + (i * w) / n, y, w / n + 0.6, 6); }
+    ctx.strokeStyle = c.rule; ctx.lineWidth = 1; ctx.strokeRect(x - 0.5, y - 0.5, w + 1, 7);
+    const f = `11px ${MONO}`;
+    text(ctx, "−" + fmt(vmax), x, y + 19, c.ink3, "left", f);
+    text(ctx, "0", x + w / 2, y + 19, c.ink3, "center", f);
+    text(ctx, fmt(vmax), x + w, y + 19, c.ink3, "right", f);
+  }
+
   function diverging(c) {
     const bg = toRGB(c.bg), pos = toRGB(c.red), neg = toRGB(c.blue);
     return (v, scale = 3) => { const a = Math.min(1, Math.abs(v) / scale) ** 0.8; return rgb(mix(bg, v < 0 ? neg : pos, a)); };
@@ -195,7 +206,7 @@
     cem2d(cv, c) {
       const { ctx, w, h } = VZ.fit(cv), D = VZ.CEM2D, col = diverging(c), cm = cv.dataset.fields === "cm";
       ctx.fillStyle = c.bg; ctx.fillRect(0, 0, w, h);
-      const gap = 30, s = Math.min((w - gap - 24) / 16, (h - 40) / 8), ox0 = (w - 16 * s - gap) / 2, oy = Math.max(8, (h - 8 * s - 28) / 2);
+      const gap = 30, s = Math.min((w - gap - 24) / 16, (h - 72) / 8), ox0 = (w - 16 * s - gap) / 2, oy = Math.max(8, (h - 8 * s - 60) / 2);
       const panels = cm ? [["c · fast activation", D.c], ["m · slow memory", D.m]] : [["after food", D.food], ["after poison", D.poison]];
       panels.forEach(([name, F], k) => {
         const ox = ox0 + k * (8 * s + gap), vmax = cm ? Math.max(...F.flat().map(Math.abs)) : 3.6;
@@ -210,6 +221,7 @@
           ctx.strokeStyle = c.ink; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(ox + (mj + 0.5) * s, oy + (mi + 0.5) * s, s * 0.62, 0, 7); ctx.stroke();
         }
         text(ctx, name, ox, oy + 8 * s + 20, c.ink2);
+        colorbar(ctx, c, col, ox, oy + 8 * s + 34, 8 * s, vmax);
       });
     },
 
@@ -415,7 +427,7 @@
       const steps = 18, rev = 3.2, u = t % (rev + 2.8), rows = Math.min(steps + 1, Math.floor((u / rev) * (steps + 1)) + 1);
       const { ctx, w, h } = VZ.fit(cv), col = diverging(c);
       ctx.fillStyle = c.bg; ctx.fillRect(0, 0, w, h);
-      const lm = 26, gap = 28, pw = (w - lm - gap - 10) / 2, L = 19, s = Math.min(pw / L, (h - 46) / (steps + 1));
+      const lm = 26, gap = 28, pw = (w - lm - gap - 10) / 2, L = 19, s = Math.min(pw / L, (h - 80) / (steps + 1));
       cv._runs.forEach((r, p) => {
         const ox = lm + p * (pw + gap) + (pw - L * s) / 2, oy = 6;
         for (let k = 0; k < rows; k++) for (let j = 0; j < L; j++) { ctx.fillStyle = col(r.rows[k][j], 3); ctx.fillRect(ox + j * s + 0.5, oy + k * s + 0.5, s - 1, s - 1); }
@@ -424,6 +436,8 @@
         text(ctx, r.lab, ox + (L * s) / 2, oy + (steps + 1) * s + 20, c.ink2, "center");
       });
       arrow(ctx, 12, 8, 12, 6 + (steps + 1) * s, c.ink3, 1.2);
+      const bw = Math.min(220, w - lm - 10);
+      colorbar(ctx, c, col, lm + (w - lm - 10 - bw) / 2, 6 + (steps + 1) * s + 40, bw, 3);
     },
   };
 
