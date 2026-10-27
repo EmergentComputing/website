@@ -253,16 +253,16 @@
             <p class="card-cap">The learned x + 2 program; input and output are 2×2 blocks on the diagonal.</p>
           </article>
           <article class="card">
-            <canvas data-viz="pulse" role="img" aria-label="Two impulse pairs in the learned CEM1D lattice: one travels left, the other right"></canvas>
-            <h4>CEM1D · continuous lattice</h4>
-            <p>Nineteen real-valued cells and a rule with three learned coefficients. Controls CartPole with 735 ± 107 out of 800. The learned rule moves values through the lattice as travelling pulses.</p>
-            <p class="card-cap">Two impulse pairs under the learned rule. Red positive, blue negative.</p>
+            <canvas data-viz="pulse" role="img" aria-label="Two signals in the learned CEM1D automaton: one travels left, the other right"></canvas>
+            <h4>CEM1D · continuous automaton</h4>
+            <p>A one-dimensional automaton with continuous-valued cells and a local update rule. It controls CartPole, balancing the pole for 735 ± 107 of 800 steps.</p>
+            <p class="card-cap">Signals travelling through the learned automaton. Red positive, blue negative.</p>
           </article>
           <article class="card">
-            <canvas data-viz="cem2d" role="img" aria-label="Fast field of the learned CEM2D model after food and after poison, with input and output ports and the phase-memory cell"></canvas>
+            <canvas data-viz="cem2d" role="img" aria-label="Grid state of the learned CEM2D model after food and after poison, with the cell that stores the current mode circled"></canvas>
             <h4>CEM2D · Meta-Life</h4>
-            <p>An 8×8 field with a fast and a slow channel; 35 rule and interface parameters. An agent adapts online when food turns into poison: meta-score 0.71, against 0.82 for a recurrent-network baseline. One cell next to the reward port stores the current phase.</p>
-            <p class="card-cap">Fast field after food and after poison, read from the paper's figure. Circled: the phase cell.</p>
+            <p>A two-dimensional grid with a local update rule. It controls an agent that forages food and avoids poison, and adapts online when food and poison swap roles.</p>
+            <p class="card-cap">Grid state after eating food and after eating poison. Circled: the cell that stores which mode is active.</p>
           </article>
         </div>
 
