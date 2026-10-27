@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var m;try{m=localStorage.getItem("ec-mode");}catch(e){}if(m!=="light"&&m!=="dark"){m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.mode=m;})();</script>
+  <title>Emergent Models — Emergent Computing</title>
+  <meta name="description" content="Emergent Models: machine-learning models built from simple dynamical systems. Framework, latent universality, and experiments with EM43, Game of Life, CEM1D and CEM2D.">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/research/emergent-models.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Emergent Computing">
+  <meta property="og:url" content="https://emergentcomputing.org/research/emergent-models.html">
+  <meta property="og:title" content="Emergent Models">
+  <meta property="og:description" content="Emergent Models: machine-learning models built from simple dynamical systems. Framework, latent universality, and experiments with EM43, Game of Life, CEM1D and CEM2D.">
+  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
+  <meta property="article:published_time" content="2026-10-26">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+  <link rel="stylesheet" href="../style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Emergent Models",
+  "description": "Emergent Models: machine-learning models built from simple dynamical systems. Framework, latent universality, and experiments with EM43, Game of Life, CEM1D and CEM2D.",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-27",
+  "url": "https://emergentcomputing.org/research/emergent-models.html",
+  "mainEntityOfPage": "https://emergentcomputing.org/research/emergent-models.html",
+  "author": {
+    "@type": "ResearchOrganization",
+    "@id": "https://emergentcomputing.org/#organization",
+    "name": "Emergent Computing"
+  },
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
+  },
+  "about": [
+    "Emergent Models",
+    "Cellular automata",
+    "Latent universality",
+    "Game of Life",
+    "Evolutionary search"
+  ],
+  "isBasedOn": {
+    "@type": "ScholarlyArticle",
+    "@id": "https://arxiv.org/abs/2608.14019",
+    "name": "Emergent Models: Intelligence from Tiny Substrates"
+  }
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#code">Code</a>
+        <a href="../index.html#people">People</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <button class="mode-toggle" type="button" data-mode-toggle aria-label="Switch colour mode"><svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="kicker">Pinned · <span class="status pub">published</span></p>
+        <h1>Emergent Models</h1>
+        <p class="lede">A machine-learning model made of a simple dynamical system: a state, a local update rule, a halting condition and a fixed way to write inputs and read outputs. Training searches for the initial state, the program, that makes the system compute the task.</p>
+        <nav class="toc" aria-label="On this page">
+          <a href="#summary">Summary</a>
+          <a href="#model">The model</a>
+          <a href="#iteration">Why iteration</a>
+          <a href="#universality">Latent universality</a>
+          <a href="#experiments">Experiments</a>
+          <a href="#em43">EM43</a>
+          <a href="#gol">Game of Life</a>
+          <a href="#continuous">Continuous substrates</a>
+          <a href="#open">Open questions</a>
+          <a href="#cite">Cite</a>
+        </nav>
+      </header>
+
+      <div class="prose">
+        <h2 id="summary">Summary</h2>
+        <ul>
+          <li>An <b>Emergent Model</b> (EM) is a dynamical system, such as a cellular automaton, with an encoder and a decoder. Prediction: write the input into the state, iterate a fixed local rule until a halting condition holds, read the output.</li>
+          <li>The learnable object is mainly the <b>initial state</b>, called the program. The rule and parts of the interface can be learned too. Training uses evolutionary search, because the dynamics are recursive, often discrete and not differentiable.</li>
+          <li><b>Latent universality</b>: some EMs, with rule and interface fixed, realise every partial computable function by changing only the program. This is an existence result; it says nothing about how hard the program is to find.</li>
+          <li>The experiments use deliberately minimal models, from tens to a few hundred parameters. The clearest result: a 140-bit cellular automaton trained on x ≤ 30 computes x + 1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2) exactly on every input tested up to 1000.</li>
+          <li>The paper presents the framework as foundational. It does not propose a competitive architecture, and several tasks were not learned (see <a href="#experiments">Experiments</a>).</li>
+        </ul>
+        <p class="small muted">Sources: G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy, <a href="https://arxiv.org/abs/2608.14019"><i>Emergent Models: Intelligence from Tiny Substrates</i></a>, arXiv:2608.14019, 2026; and <a href="https://doi.org/10.1162/ISAL.a.953"><i>Emergent Models: Machine Learning from Cellular Automata</i></a>, ALIFE 2026, MIT Press. Code and live demos: <a href="https://emergentcomputing.github.io/em-paper/">emergentcomputing.github.io/em-paper</a>.</p>
+
+        <h2 id="model">The model</h2>
+        <p>An Emergent Model is a tuple <code>M = (S, f, H, E, D, ⊕)</code>: a state space <code>S</code> over a graph of cells, a transition function <code>f</code> (usually local), a halting operator <code>H</code>, an encoder <code>E</code>, a decoder <code>D</code>, and an operator <code>⊕</code> that combines the program with the encoded input.</p>
+      </div>
+
+      <figure class="figure wide">
+        <div class="figure-body">
+          <svg class="diagram" viewBox="0 0 760 150" role="img" aria-label="Inference in an Emergent Model: the input x is encoded, combined with the program p, the rule f is iterated until the halting condition holds, and the decoder reads the output y.">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+              </marker>
+            </defs>
+            <text x="18" y="95">x</text>
+            <line x1="34" y1="90" x2="68" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="70" y="70" width="56" height="40" rx="4"></rect>
+            <text x="98" y="95" text-anchor="middle">E</text>
+            <line x1="126" y1="90" x2="168" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="186" y="8" width="108" height="32" rx="4"></rect>
+            <text x="240" y="29" text-anchor="middle">program p</text>
+            <line x1="240" y1="40" x2="240" y2="68" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="170" y="70" width="140" height="40" rx="4"></rect>
+            <text x="240" y="95" text-anchor="middle">s₀ = p ⊕ E(x)</text>
+            <line x1="310" y1="90" x2="348" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="350" y="70" width="150" height="40" rx="4"></rect>
+            <text x="425" y="95" text-anchor="middle">s ← f(s)</text>
+            <path d="M478 70 C 478 34, 372 34, 372 66" fill="none" stroke="currentColor" marker-end="url(#arrow)"></path>
+            <text x="425" y="28" text-anchor="middle">until H(s) = 1</text>
+            <line x1="500" y1="90" x2="538" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <rect class="box" x="540" y="70" width="56" height="40" rx="4"></rect>
+            <text x="568" y="95" text-anchor="middle">D</text>
+            <line x1="596" y1="90" x2="634" y2="90" stroke="currentColor" marker-end="url(#arrow)"></line>
+            <text x="644" y="95">y</text>
+            <text x="18" y="140" style="opacity:.6">T, the number of steps, depends on the input</text>
+          </svg>
+        </div>
+      </figure>
+
+      <div class="prose">
+        <p>Inference is <code>y = D(f<sup>T</sup>(p ⊕ E(x)))</code>, where <code>T</code> is the first step at which <code>H</code> fires. If it never fires, the output is undefined. The state provides memory; repeated application of <code>f</code> provides computation time.</p>
+        <p>Parameters fall into two groups. <b>Soft parameters</b> are the program: they live in the state and can change during inference. <b>Hard parameters</b> (rule, halting condition, interface) play the role of hardware: optimised during training, fixed during inference.</p>
+        <p>For streams of inputs, such as a control loop, a <b>retention operator</b> <code>R</code> turns the final state of one prediction into the program of the next: <code>p<sub>i+1</sub> = R(s<sub>T,i</sub>)</code>. The input stream can then change the computation itself, which is how the adaptive experiments below work.</p>
+
+        <h2 id="iteration">Why iteration</h2>
+        <p>The relevant notion of capacity is <b>global expressivity</b>: which functions a model family can represent over their whole, possibly unbounded domain, not only on a compact region. A model that represents the generating rule extrapolates by construction; a local fit does not.</p>
+        <p>Feed-forward networks are limited in this sense. Universal approximation holds on compact domains; outside them, sigmoidal networks tend to constants and ReLU networks become linear, so functions like sin x, eˣ or x mod 4 cannot be represented globally. Iterated systems with unbounded memory and time can be Turing-complete, which is the maximal notion of global expressivity in the discrete setting. Universality says nothing about trainability, but it removes a hard ceiling.</p>
+      </div>
+
+      <figure class="figure wide"><canvas data-viz="sine" style="height:300px" role="img" aria-label="A sigmoid network trained on sin x fits the training range and diverges outside it; the same network inside a loop matches sin x everywhere"></canvas><figcaption><b>Fixed depth against iteration.</b> Red: a sigmoid MLP (1–32–32–1) trained on sin x for 0 ≤ x ≤ 4π. Outside the training range it follows no rule. Blue: the same network inside the hand-written loop x ← x − 2π until x &lt; 2π. Dashed: sin x.</figcaption></figure>
+
+      <div class="prose">
+        <h2 id="universality">Latent universality</h2>
+        <p><b>Theorem (latent universality).</b> There exists an Emergent Model with a fixed rule, a fixed halting condition and a fixed interface on binary strings such that every partial computable function <code>g : {0,1}* ⇀ {0,1}*</code> is computed by some finite program state <code>p</code>.</p>
+        <p>The proof uses a universal Turing machine whose program and input occupy separate regions of the tape, so the initial state factors as <code>p ⊕ E(x)</code> and the encoder never sees the program. A lemma extends the result to Conway's Game of Life through Rendell's universal construction.</p>
+        <p>The split matters for learning. The fixed interface defines only the syntax: where data is written and read. The program carries the semantics: which function is computed. Because the target function is unknown in advance, everything task-specific must live in the program, and search can vary programs without touching the interface. Classical universality is a property of the substrate alone and may need a different encoding for each algorithm; latent universality is a property of the whole model with one interface.</p>
+        <p><b>Searchability.</b> Programs are finite strings, so enumeration or random sampling eventually finds one that computes any given function. This is existence only: the search can be arbitrarily long. The experiments do not realise latent universality and none of their claims depend on the theorem. Concrete fixed-interface machines are the subject of <a href="lu-machines.html">Latent-universal machines</a>.</p>
+
+        <h2 id="experiments">Experiments</h2>
+        <p>A zoo of minimal instances, each trained with population-based genetic algorithms. Results are representative runs, not multi-seed statistics.</p>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr><th>Model</th><th>Substrate</th><th>Searched</th><th>Task</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>EM43</td><td>1D cellular automaton, 4 values, radius 1</td><td>rule (60) + program (10): 140 bits</td><td>x + 1, 2x, x mod 4, round(x/3), x·(1 + x mod 2)</td><td>Trained on [0, 30]: 100% exact on [30, 1000], every run. Two-input a·b not learned (&lt; 10% test).</td></tr>
+            <tr><td>GoL-EM</td><td>Game of Life, rule fixed</td><td>positions of 2 gliders</td><td>x + k, k ∈ {−2, −1, 1, 2, 5}</td><td>Trained on [0, 10]: 100% exact on [10, 200]. Parity-conditional x ± 1 not learned (50% test). Random search about as good as the GA.</td></tr>
+            <tr><td>GoL-EM</td><td>Game of Life, rule fixed</td><td>gliders + sparse cells</td><td>CartPole (max 500)</td><td>Return 317 ± 122 (random ≈ 20). Episodes mostly end with the cart leaving the track.</td></tr>
+            <tr><td>CEM1D</td><td>continuous 1D lattice, 19 cells</td><td>3 rule coefficients + 19 initial values</td><td>CartPole (max 800)</td><td>Return 735 ± 107 over 1000 new episodes. Uses pole angle well, cart position poorly.</td></tr>
+            <tr><td>CEM2D</td><td>8 × 8 field, fast + slow channel</td><td>35 rule and interface + 128 state parameters</td><td>Meta-Life: food/poison phases</td><td>Meta-score 0.71 (0 no adaptation, 1 perfect). A memory RNN baseline reached 0.82.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h2 id="em43">EM43 and geometric grokking</h2>
+        <p>EM43 is a one-dimensional cellular automaton with four cell values and radius 1. The rule is a lookup table on (left, centre, right); four entries are fixed so that empty space stays empty and an isolated red cell stays where it is, leaving 60 learned entries. The program is 10 cells to the left of the origin. Input: one red cell x cells right of the origin. Halting: blue cells are at least half of the non-blank cells. Output: the distance of the rightmost red cell from the origin.</p>
+        <p>In runs that generalise, the computation is visible as a regular space-time geometry that keeps its shape as the input grows. For x mod 4, signals from the program region shift the red marker left by four cells, repeatedly, until blue cells become the majority and the machine halts with the marker at the answer. The paper calls this <b>geometric grokking</b>. Whether it persists on harder tasks, or is partly an artefact of these tasks and this interface, is open.</p>
+      </div>
+
+      <figure class="figure wide" data-explorer>
+        <div class="controls">
+          <label>task
+            <select data-task aria-label="Task">
+              <option value="plus1">x + 1</option>
+              <option value="x2">2x</option>
+              <option value="mod4">x mod 4</option>
+              <option value="rounddiv3" selected>round(x/3)</option>
+              <option value="mod2c">x·(1 + x mod 2)</option>
+            </select>
+          </label>
+          <label>x <input data-x type="number" min="0" max="150" step="1" value="47" inputmode="numeric" aria-label="Input x"></label>
+          <button type="button" data-random>random x &gt; 30</button>
+        </div>
+        <canvas role="img" aria-label="EM43 space-time diagram for the selected task and input"></canvas>
+        <div class="readout" data-readout aria-live="polite"></div>
+        <figcaption><b>EM43 explorer.</b> Choose a task and an input up to 150. Time runs downward; the input is the red cell x cells right of the green origin; the output is the position of the rightmost red cell when blue cells become the majority. All five models were trained on x ≤ 30.</figcaption>
+      </figure>
+
+      <div class="figure-row">
+        <figure class="figure"><canvas data-viz="em43" data-task="mod4" data-x="15" style="height:280px" role="img" aria-label="EM43 computing 15 mod 4"></canvas><figcaption>x mod 4, x = 15 → 3</figcaption></figure>
+        <figure class="figure"><canvas data-viz="em43" data-task="mod4" data-x="30" style="height:280px" role="img" aria-label="EM43 computing 30 mod 4"></canvas><figcaption>x = 30 → 2</figcaption></figure>
+        <figure class="figure"><canvas data-viz="em43" data-task="mod4" data-x="70" style="height:280px" role="img" aria-label="EM43 computing 70 mod 4"></canvas><figcaption>x = 70 → 2 (outside the training range)</figcaption></figure>
+      </div>
+      <p class="small muted" style="max-width:70ch">The same learned x mod 4 model at three input sizes: the mechanism keeps its shape. Scales differ between panels.</p>
+
+      <div class="prose">
+        <h2 id="gol">Game of Life</h2>
+        <p>With Conway's rule fixed, only the program can be searched: here, the positions of two gliders in a 16 × 16 region. The input is a 2 × 2 block on the diagonal, 2x cells from the origin; the run stops when the board stops changing; the output is the leftmost isolated block, read with the same stride.</p>
+        <p>The x + k tasks were learned exactly, but Game of Life was hard to train. Small changes of the program change the behaviour completely, so similar programs have unrelated fitness and random search performs about as well as the genetic algorithm. The interface, based on isolated blocks, may also be too poor to reach the computational richness that makes Game of Life universal.</p>
+      </div>
+      <figure class="figure wide" style="max-width:560px"><canvas data-viz="gol" data-xs="2,5,9" style="height:470px" role="img" aria-label="Game of Life board running the learned x + 2 program for x = 2, 5 and 9"></canvas><figcaption><b>GoL-EM, x + 2.</b> The learned two-glider program (top left) run to its fixed point for x = 2, 5 and 9. Grid: one square per integer along the diagonal. Initial state from the paper's figure; the run reproduces the paper's trace.</figcaption></figure>
+
+      <div class="prose">
+        <h2 id="continuous">Continuous substrates</h2>
+        <h3>CEM1D: a continuous lattice for control</h3>
+        <p>Nineteen real-valued cells with the update <code>s<sub>j</sub> ← s<sub>j</sub> + 0.1 (a s<sub>j−1</sub> + b s<sub>j</sub> + c s<sub>j+1</sub> − γ s<sub>j</sub><sup>3</sup>)</code>, reflecting boundaries. Only the three coefficients and the 19-cell initial state are trained; the learned values are a = 0.796, b = −0.319, c = −1.628 with γ = 0.03. The four CartPole observations overwrite four cells; the sign of the centre cell pushes the cart left or right. The lattice runs 30 steps per control step and its state carries over to the next one.</p>
+        <p>Result: 735 ± 107 out of 800 over 1000 new episodes (≈ 500 counts as solved). The learned rule hosts localised structures that carry values through the lattice. Leftward transport is stronger, so the angle inputs, right of the output cell, are used well and the cart position, left of it, less.</p>
+      </div>
+      <div class="figure-row" style="grid-template-columns:1fr 1fr">
+        <figure class="figure"><canvas data-viz="pulse" style="height:300px" role="img" aria-label="Two impulse pairs in the learned CEM1D lattice: one travels left, the other right"></canvas><figcaption><b>Transport.</b> Two impulse pairs under the learned rule, no inputs: opposite signs travel left, equal signs travel right.</figcaption></figure>
+        <figure class="figure"><canvas data-viz="cem" style="height:300px" role="img" aria-label="CEM1D lattice over time with inputs written every 30 steps"></canvas><figcaption><b>Ports.</b> Random values written at the four input ports every 30 steps (vertical lines). Time runs left to right, cells top to bottom; red positive, blue negative.</figcaption></figure>
+      </div>
+
+      <div class="prose">
+        <h3>CEM2D: a fast and a slow field for online adaptation</h3>
+        <p>Meta-Life is a two-dimensional world with resources. An agent sees them through three rays and outputs a turn rate and a speed. In the adaptive version, resources switch between food (+1) and poison (−1) in phases of random length, and both look the same: the agent has to taste a resource, remember the phase, then seek or avoid. Score: <code>meta = (G − B)/(G + B + ε)</code>, with G food and B poison collected.</p>
+        <p>The controller is an 8 × 8 field with a fast channel <code>c</code> and a slow, gated memory channel <code>m</code>. Ten rule coefficients are shared by all cells; the locations and scales of six ports (four inputs including the last reward, two outputs) and the number of update steps per control step are also learned, 35 parameters in all. The 128-value initial state is inherited, not mutated: each step starts from the previous final state.</p>
+      </div>
+      <figure class="figure wide" style="max-width:640px"><canvas data-viz="cem2d" style="height:280px" role="img" aria-label="Fast field of the learned CEM2D model after food and after poison, with ports and the phase-memory cell"></canvas><figcaption><b>Learned strategy.</b> Fast field after food and after poison, values read from the paper's figure. Outlined: input ports (I3 is the reward) and outputs (green). Circled: the cell that stores the phase. It is high after food, when the agent seeks resources, and low after poison, when it turns in place and avoids them.</figcaption></figure>
+      <div class="table-scroll" style="max-width:680px">
+        <table class="data">
+          <thead><tr><th></th><th>CEM2D</th><th>memory RNN</th></tr></thead>
+          <tbody>
+            <tr><td>rule and interface parameters</td><td class="num">35</td><td class="num">117</td></tr>
+            <tr><td>initial state parameters</td><td class="num">128</td><td class="num">12</td></tr>
+            <tr><td>food only: return</td><td class="num">133</td><td class="num">146</td></tr>
+            <tr><td>food or poison: meta-score</td><td class="num">0.714</td><td class="num">0.822</td></tr>
+            <tr><td>meta-score, &gt; 6 steps after a contact</td><td class="num">0.699</td><td class="num">0.796</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <p><b>Limits.</b> CartPole is solvable by linear feedback, and the Meta-Life tasks may be solvable by near-linear policies on two time scales. Harder environments are needed before these results say anything about advantages over conventional controllers.</p>
+
+        <h2 id="open">Open questions</h2>
+        <ol>
+          <li>Can a rule be co-evolved across many tasks so that, once frozen, new tasks are solved by changing only the program?</li>
+          <li>Which search methods work on landscapes where similar programs have unrelated fitness, as in Game of Life?</li>
+          <li>Does the ratio of parameters to computation time, q = N<sub>params</sub> / T̄, govern a trade-off between generalisation and trainability? (See <a href="reasoning-models.html">Iteration and reasoning</a>.)</li>
+          <li>Is geometric grokking measurable, for example by the compressibility of space-time diagrams, and does it predict extrapolation?</li>
+          <li>Does inherited state in adaptive controllers carry function, or do the hard parameters merely co-adapt to it?</li>
+        </ol>
+        <p>Related: <a href="lu-machines.html">Latent-universal machines</a> · <a href="ncpu-em.html">NCPU-EM</a> · <a href="parallel-hardware.html">Local rules on parallel hardware</a>.</p>
+
+        <h2 id="cite">Cite</h2>
+      </div>
+      <div style="max-width:70ch">
+        <div class="bibtex-wrap"><button class="copy-btn" type="button" data-copy="bib-alife2026">copy</button>
+<pre class="bibtex" id="bib-alife2026">@inproceedings{bocchese2026alife,
+  title     = {Emergent Models: Machine Learning from Cellular Automata},
+  author    = {Bocchese, Giacomo and Giacobbo, Nicola and Guichard, Etienne
+               and Wiles, James and Devireddy, Akshaj},
+  booktitle = {Proceedings of the Artificial Life Conference 2026 (ALIFE 2026)},
+  publisher = {MIT Press},
+  year      = {2026},
+  doi       = {10.1162/ISAL.a.953}
+}</pre></div>
+        <div class="bibtex-wrap"><button class="copy-btn" type="button" data-copy="bib-arxiv2026">copy</button>
+<pre class="bibtex" id="bib-arxiv2026">@misc{bocchese2026emergent,
+  title         = {Emergent Models: Intelligence from Tiny Substrates},
+  author        = {Bocchese, Giacomo and Giacobbo, Nicola and Guichard, Etienne
+                   and Wiles, James and Devireddy, Akshaj},
+  year          = {2026},
+  eprint        = {2608.14019},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.NE},
+  url           = {https://arxiv.org/abs/2608.14019}
+}</pre></div>
+      </div>
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="index.html">← All research</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
+      <nav aria-label="Footer">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
+        <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
+      </nav>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
+    </div>
+  </footer>
+
+  <script src="../viz.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -7,13 +7,13 @@
   <title>What the Emergent Models paper shows, and what it does not — Emergent Computing</title>
   <meta name="description" content="The claims of 'Emergent Models: Intelligence from Tiny Substrates', the evidence behind each, and what remains open.">
   <meta name="author" content="Emergent Computing">
-  <link rel="canonical" href="https://emergentcomputing.org/blog/emergent-models-what-the-paper-shows.html">
+  <link rel="canonical" href="https://emergentcomputing.org/research/emergent-models-what-the-paper-shows.html">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Emergent Computing">
-  <meta property="og:url" content="https://emergentcomputing.org/blog/emergent-models-what-the-paper-shows.html">
+  <meta property="og:url" content="https://emergentcomputing.org/research/emergent-models-what-the-paper-shows.html">
   <meta property="og:title" content="What the Emergent Models paper shows, and what it does not">
-  <meta property="og:description" content="The claims, the evidence behind each, and what remains open.">
+  <meta property="og:description" content="The claims of 'Emergent Models: Intelligence from Tiny Substrates', the evidence behind each, and what remains open.">
   <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
   <meta property="article:published_time" content="2026-10-26">
   <meta name="twitter:card" content="summary">
@@ -25,19 +25,29 @@
   <link rel="stylesheet" href="../style.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "What the Emergent Models paper shows, and what it does not",
-    "description": "The claims of 'Emergent Models: Intelligence from Tiny Substrates', the evidence behind each, and what remains open.",
-    "datePublished": "2026-10-26",
-    "dateModified": "2026-10-26",
-    "url": "https://emergentcomputing.org/blog/emergent-models-what-the-paper-shows.html",
-    "mainEntityOfPage": "https://emergentcomputing.org/blog/emergent-models-what-the-paper-shows.html",
-    "author": { "@type": "ResearchOrganization", "@id": "https://emergentcomputing.org/#organization", "name": "Emergent Computing" },
-    "publisher": { "@id": "https://emergentcomputing.org/#organization" },
-    "about": { "@type": "ScholarlyArticle", "@id": "https://arxiv.org/abs/2608.14019", "name": "Emergent Models: Intelligence from Tiny Substrates" }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What the Emergent Models paper shows, and what it does not",
+  "description": "The claims of 'Emergent Models: Intelligence from Tiny Substrates', the evidence behind each, and what remains open.",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-26",
+  "url": "https://emergentcomputing.org/research/emergent-models-what-the-paper-shows.html",
+  "mainEntityOfPage": "https://emergentcomputing.org/research/emergent-models-what-the-paper-shows.html",
+  "author": {
+    "@type": "ResearchOrganization",
+    "@id": "https://emergentcomputing.org/#organization",
+    "name": "Emergent Computing"
+  },
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
+  },
+  "about": {
+    "@type": "ScholarlyArticle",
+    "@id": "https://arxiv.org/abs/2608.14019",
+    "name": "Emergent Models: Intelligence from Tiny Substrates"
   }
+}
   </script>
 </head>
 <body>
@@ -47,10 +57,10 @@
     <div class="wrap">
       <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
       <nav class="nav" aria-label="Main">
-        <a href="../index.html#research">Research</a>
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
         <a href="../index.html#publications">Publications</a>
         <a href="../index.html#code">Code</a>
-        <a href="../blog/index.html" aria-current="page">Writing</a>
         <a href="../index.html#people">People</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
@@ -92,12 +102,12 @@
         </ul>
 
         <h2>What we take from it</h2>
-        <p>Two observations seem worth building on. First, the extrapolation results come from models that iterate a rule for an input-dependent number of steps, consistent with a broader pattern across looped and recursive neural models. Second, search is the bottleneck. The Game of Life result shows a landscape in which similar programs have unrelated fitness, and the paper conjectures that this is the price of having few parameters reused over many steps. Both are stated as <a href="../reasoning-models.html">hypotheses</a> we intend to test.</p>
-        <p>The concrete next steps are machines with a fixed interface where only the program changes (<a href="../emergent-models.html#machines">LUTM-1, LUTM-6</a>), neural cellular automata that share one rule across tasks (<a href="../emergent-models.html#nca">NCPU-EM</a>), and search methods built for rugged landscapes.</p>
+        <p>Two observations seem worth building on. First, the extrapolation results come from models that iterate a rule for an input-dependent number of steps, consistent with a broader pattern across looped and recursive neural models. Second, search is the bottleneck. The Game of Life result shows a landscape in which similar programs have unrelated fitness, and the paper conjectures that this is the price of having few parameters reused over many steps. Both are stated as <a href="reasoning-models.html">hypotheses</a> we intend to test.</p>
+        <p>The concrete next steps are machines with a fixed interface where only the program changes (<a href="lu-machines.html">LUTM-1, LUTM-6</a>), neural cellular automata that share one rule across tasks (<a href="ncpu-em.html">NCPU-EM</a>), and search methods built for rugged landscapes.</p>
       </div>
 
       <nav class="post-nav" aria-label="Post navigation">
-        <a href="index.html">← All notes</a>
+        <a href="index.html">← All research</a>
       </nav>
     </article>
   </main>
@@ -106,11 +116,11 @@
     <div class="wrap">
       <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
       <nav aria-label="Footer">
-        <a href="../emergent-models.html">Emergent Models</a>
-        <a href="../reasoning-models.html">Reasoning models</a>
-        <a href="../applied-research.html">Applied research</a>
-        <a href="../blog/index.html">Writing</a>
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
         <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
         <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
       </nav>
       <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>

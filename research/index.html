@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var m;try{m=localStorage.getItem("ec-mode");}catch(e){}if(m!=="light"&&m!=="dark"){m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.mode=m;})();</script>
+  <title>Research — Emergent Computing</title>
+  <meta name="description" content="Research at Emergent Computing: Emergent Models, latent-universal machines, neural cellular automata, iteration and reasoning, parallel hardware.">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/research/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Emergent Computing">
+  <meta property="og:url" content="https://emergentcomputing.org/research/">
+  <meta property="og:title" content="Research">
+  <meta property="og:description" content="Research at Emergent Computing: Emergent Models, latent-universal machines, neural cellular automata, iteration and reasoning, parallel hardware.">
+  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+  <link rel="stylesheet" href="../style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "@id": "https://emergentcomputing.org/research/#blog",
+  "name": "Emergent Computing — Research",
+  "url": "https://emergentcomputing.org/research/",
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
+  },
+  "blogPost": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Iteration and reasoning: looped transformers, ACT and Emergent Models",
+      "url": "https://emergentcomputing.org/research/reasoning-models.html",
+      "datePublished": "2026-10-27"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Local rules on parallel hardware",
+      "url": "https://emergentcomputing.org/research/parallel-hardware.html",
+      "datePublished": "2026-10-27"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "What the Emergent Models paper shows, and what it does not",
+      "url": "https://emergentcomputing.org/research/emergent-models-what-the-paper-shows.html",
+      "datePublished": "2026-10-26"
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Applied research",
+      "url": "https://emergentcomputing.org/research/applied-research.html",
+      "datePublished": "2026-10-26"
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "Emergent Models",
+      "url": "https://emergentcomputing.org/research/emergent-models.html"
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "Latent-universal machines",
+      "url": "https://emergentcomputing.org/research/lu-machines.html"
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "NCPU-EM",
+      "url": "https://emergentcomputing.org/research/ncpu-em.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#code">Code</a>
+        <a href="../index.html#people">People</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <button class="mode-toggle" type="button" data-mode-toggle aria-label="Switch colour mode"><svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="kicker">Research</p>
+        <h1>Emergent and evolutionary computation</h1>
+        <p class="lede">How small rules, search and selection produce programs that generalise. Pinned posts describe our lines of work and are kept up to date; posts below are dated notes, hypotheses and results, newest first.</p>
+      </header>
+
+      <h2 class="list-head">Pinned</h2>
+      <div class="pins">
+        <a class="pin" href="emergent-models.html" style="--accent:var(--c-em)">
+          <canvas data-viz="em43" data-task="mod4" data-x="70" role="img" aria-label="EM43 computing 70 mod 4"></canvas>
+          <span class="status pub">Published</span>
+          <h3>Emergent Models</h3>
+          <p>Framework, latent-universality theorem, and experiments on discrete and continuous substrates: EM43, Game of Life, CEM1D, CEM2D.</p>
+        </a>
+        <a class="pin" href="lu-machines.html" style="--accent:var(--c-lutm)">
+          <canvas data-viz="lutm" role="img" aria-label="LUTM-6 program head and data tape over time"></canvas>
+          <span class="status prog">In progress</span>
+          <h3>Latent-universal machines</h3>
+          <p>LUTM-1, LUTM-6 and LU-A: small machines whose rule and interface never change. Only the program differs between tasks, and we measure how hard programs are to find.</p>
+        </a>
+        <a class="pin" href="ncpu-em.html" style="--accent:var(--c-nca)">
+          <canvas data-viz="ncpu" data-model="ncpu-model.js" data-runs="reverse:11111100:reverse;increment:10110111:x + 1" data-show="28" role="img" aria-label="NCPU-EM-1D computing reverse and increment with one shared neural rule"></canvas>
+          <span class="status prog">In progress</span>
+          <h3>NCPU-EM</h3>
+          <p>Neural cellular automata with one shared rule and a learned program per task. Builds on NCPU by Zhechev and Walas.</p>
+        </a>
+      </div>
+
+      <h2 class="list-head">Posts</h2>
+      <!-- Add new posts at the top of this list (and to the blogPost list in the JSON-LD above). See README.md. -->
+      <ul class="items posts" style="margin-bottom:72px">
+        <li><span class="meta"><time datetime="2026-10-27">2026-10-27</time> · direction</span><a class="name" href="reasoning-models.html">Iteration and reasoning: looped transformers, ACT and Emergent Models</a><p class="desc">What looped and adaptive-time models have in common with Emergent Models, and four hypotheses we want to test.</p></li>
+        <li><span class="meta"><time datetime="2026-10-27">2026-10-27</time> · direction</span><a class="name" href="parallel-hardware.html">Local rules on parallel hardware</a><p class="desc">Search on GPUs, cellular arithmetic, and the limit that locality puts on latency.</p></li>
+        <li><span class="meta"><time datetime="2026-10-26">2026-10-26</time> · note</span><a class="name" href="emergent-models-what-the-paper-shows.html">What the Emergent Models paper shows, and what it does not</a><p class="desc">The claims, the evidence behind each, and the open problems.</p></li>
+        <li><span class="meta"><time datetime="2026-10-26">2026-10-26</time> · collaboration</span><a class="name" href="applied-research.html">Applied research</a><p class="desc">Joint projects where small iterated models, program search or evolutionary optimisation fit the problem.</p></li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
+      <nav aria-label="Footer">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
+        <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
+      </nav>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
+    </div>
+  </footer>
+
+  <script src="../viz.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

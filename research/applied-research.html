@@ -5,34 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>(function(){var m;try{m=localStorage.getItem("ec-mode");}catch(e){}if(m!=="light"&&m!=="dark"){m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.mode=m;})();</script>
   <title>Applied research — Emergent Computing</title>
-  <meta name="description" content="Research collaborations on problems suited to small iterated models, program search and evolutionary optimisation, and how Emergent Computing runs them.">
+  <meta name="description" content="Joint projects where small iterated models, program search or evolutionary optimisation fit the problem: scope and method.">
   <meta name="author" content="Emergent Computing">
-  <link rel="canonical" href="https://emergentcomputing.org/applied-research.html">
+  <link rel="canonical" href="https://emergentcomputing.org/research/applied-research.html">
 
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:site_name" content="Emergent Computing">
-  <meta property="og:url" content="https://emergentcomputing.org/applied-research.html">
-  <meta property="og:title" content="Applied research — Emergent Computing">
-  <meta property="og:description" content="Collaborations on problems suited to small iterated models, program search and evolutionary optimisation.">
+  <meta property="og:url" content="https://emergentcomputing.org/research/applied-research.html">
+  <meta property="og:title" content="Applied research">
+  <meta property="og:description" content="Joint projects where small iterated models, program search or evolutionary optimisation fit the problem: scope and method.">
   <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
   <meta name="twitter:card" content="summary">
 
-  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="icon" type="image/png" href="../images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "@id": "https://emergentcomputing.org/applied-research.html#webpage",
-    "name": "Applied research",
-    "url": "https://emergentcomputing.org/applied-research.html",
-    "isPartOf": { "@id": "https://emergentcomputing.org/#website" },
-    "about": { "@id": "https://emergentcomputing.org/#organization" }
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "headline": "Applied research",
+  "description": "Joint projects where small iterated models, program search or evolutionary optimisation fit the problem: scope and method.",
+  "datePublished": "2026-10-26",
+  "dateModified": "2026-10-27",
+  "url": "https://emergentcomputing.org/research/applied-research.html",
+  "mainEntityOfPage": "https://emergentcomputing.org/research/applied-research.html",
+  "author": {
+    "@type": "ResearchOrganization",
+    "@id": "https://emergentcomputing.org/#organization",
+    "name": "Emergent Computing"
+  },
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
+  },
+  "about": [
+    "Collaboration",
+    "Evolutionary optimisation",
+    "Control"
+  ]
+}
   </script>
 </head>
 <body>
@@ -40,14 +54,14 @@
 
   <header class="site-header">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
       <nav class="nav" aria-label="Main">
-        <a href="index.html#research" aria-current="page">Research</a>
-        <a href="index.html#publications">Publications</a>
-        <a href="index.html#code">Code</a>
-        <a href="blog/index.html">Writing</a>
-        <a href="index.html#people">People</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#code">Code</a>
+        <a href="../index.html#people">People</a>
+        <a href="../index.html#contact">Contact</a>
       </nav>
       <button class="mode-toggle" type="button" data-mode-toggle aria-label="Switch colour mode"><svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></button>
     </div>
@@ -56,7 +70,7 @@
   <main id="main">
     <div class="wrap">
       <header class="page-head">
-        <p class="kicker">Research · <span class="status collab">collaboration</span></p>
+        <p class="kicker">Collaboration · <span class="status collab">open</span></p>
         <h1>Applied research</h1>
         <p class="lede">We take on joint projects when a problem is a good test of our methods and the results can be published.</p>
       </header>
@@ -76,31 +90,33 @@
           <li>Run a conventional baseline first. If a standard method solves the problem, that is the result.</li>
           <li>Publish code and report negative results.</li>
         </ol>
-        <p>Our current methods are research tools, not products. They are slower to train than standard neural networks and their advantages are still being measured; see the limitations on the <a href="emergent-models.html#experiments">Emergent Models</a> page.</p>
+        <p>Our current methods are research tools, not products. They are slower to train than standard neural networks and their advantages are still being measured; see the limitations in <a href="emergent-models.html#experiments">Emergent Models</a>.</p>
 
         <h2>Contact</h2>
         <p>Describe the problem, the data, and what a successful outcome would look like: <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>.</p>
       </div>
-      <div style="height:64px"></div>
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="index.html">← All research</a>
+      </nav>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <a class="brand" href="index.html"><img src="images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
       <nav aria-label="Footer">
-        <a href="emergent-models.html">Emergent Models</a>
-        <a href="reasoning-models.html">Reasoning models</a>
-        <a href="applied-research.html">Applied research</a>
-        <a href="blog/index.html">Writing</a>
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
         <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
         <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
       </nav>
       <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
     </div>
   </footer>
 
-  <script src="viz.js"></script>
-  <script src="script.js"></script>
+  <script src="../viz.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>

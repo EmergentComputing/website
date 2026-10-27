@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var m;try{m=localStorage.getItem("ec-mode");}catch(e){}if(m!=="light"&&m!=="dark"){m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.mode=m;})();</script>
+  <title>Iteration and reasoning — Emergent Computing</title>
+  <meta name="description" content="Looped transformers, adaptive computation time, recurrent and recursive networks, neural cellular automata and Emergent Models: what iteration buys, and four hypotheses to test.">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/research/reasoning-models.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Emergent Computing">
+  <meta property="og:url" content="https://emergentcomputing.org/research/reasoning-models.html">
+  <meta property="og:title" content="Iteration and reasoning">
+  <meta property="og:description" content="Looped transformers, adaptive computation time, recurrent and recursive networks, neural cellular automata and Emergent Models: what iteration buys, and four hypotheses to test.">
+  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
+  <meta property="article:published_time" content="2026-10-27">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+  <link rel="stylesheet" href="../style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Iteration and reasoning: looped transformers, ACT and Emergent Models",
+  "description": "Looped transformers, adaptive computation time, recurrent and recursive networks, neural cellular automata and Emergent Models: what iteration buys, and four hypotheses to test.",
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27",
+  "url": "https://emergentcomputing.org/research/reasoning-models.html",
+  "mainEntityOfPage": "https://emergentcomputing.org/research/reasoning-models.html",
+  "author": {
+    "@type": "ResearchOrganization",
+    "@id": "https://emergentcomputing.org/#organization",
+    "name": "Emergent Computing"
+  },
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
+  },
+  "about": [
+    "Reasoning models",
+    "Looped transformers",
+    "Adaptive computation time",
+    "Neural cellular automata",
+    "Length generalisation"
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#code">Code</a>
+        <a href="../index.html#people">People</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <button class="mode-toggle" type="button" data-mode-toggle aria-label="Switch colour mode"><svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="kicker">Direction · <span class="status hyp">hypotheses</span></p>
+        <h1>Iteration and reasoning</h1>
+        <p class="lede">Looped transformers, adaptive computation time and small recursive networks all reach for the same ingredient as Emergent Models: one update applied many times, with the number of steps set by the input. What that ingredient buys, and the hypotheses we want to test. No results on this page yet.</p>
+        <p class="post-meta"><time datetime="2026-10-27">27 October 2026</time> · Emergent Computing</p>
+      </header>
+
+      <div class="prose">
+        <h2 id="landscape">Models that iterate</h2>
+        <p>By reasoning we mean, narrowly, deriving an answer by applying a sequence of operations rather than recalling a stored one. A fixed-depth network applies a fixed number of operations to every input. Several model families remove that limit by iterating one update:</p>
+        <ul>
+          <li><b>Adaptive computation time.</b> Graves' ACT-RNN repeats the recurrent update several times per input and learns a halting unit that decides when to stop, with a cost on the number of steps<sup>[<a href="#ref-graves">1</a>]</sup>. PonderNet makes the halting decision probabilistic<sup>[<a href="#ref-ponder">3</a>]</sup>.</li>
+          <li><b>Universal Transformers</b> apply the same transformer block repeatedly across depth, with ACT deciding per position how many times<sup>[<a href="#ref-ut">2</a>]</sup>.</li>
+          <li><b>Looped transformers.</b> A looped transformer can emulate a programmable computer<sup>[<a href="#ref-giannou">7</a>]</sup>; looping helps in-context learning of algorithms<sup>[<a href="#ref-yang">8</a>]</sup>; with an adaptive number of loops it length-generalises on tasks with iterative solutions<sup>[<a href="#ref-fan">9</a>]</sup>; and many reasoning problems need depth more than parameters, which looping provides<sup>[<a href="#ref-saunshi">10</a>]</sup>. Recurrent-depth language models scale test-time computation by iterating a latent block<sup>[<a href="#ref-geiping">11</a>]</sup>.</li>
+          <li><b>Recurrent networks that extrapolate.</b> Networks trained on small mazes or short prefix sums solve larger instances when allowed more iterations at test time<sup>[<a href="#ref-easyhard">5</a>, <a href="#ref-bansal">6</a>]</sup>. The Neural GPU, a convolutional gated recurrent unit applied for a number of steps equal to the input length, learned binary addition and multiplication on numbers up to 20 bits and made no errors on much longer ones<sup>[<a href="#ref-ngpu">4</a>]</sup>.</li>
+          <li><b>Small recursive reasoners.</b> HRM recurses two small networks at different frequencies<sup>[<a href="#ref-hrm">12</a>]</sup>; TRM recurses a single two-layer network, and with 7M parameters reports 45% on ARC-AGI-1<sup>[<a href="#ref-trm">13</a>]</sup>.</li>
+          <li><b>Neural cellular automata</b> iterate a local neural rule on a grid<sup>[<a href="#ref-nca">14</a>]</sup>; NCPU trains them for boolean computation<sup>[<a href="#ref-ncpu">15</a>]</sup>, and our <a href="ncpu-em.html">NCPU-EM</a> adds a program per task.</li>
+        </ul>
+        <p>Reasoning language models also iterate, in token space: each generated token is another pass of the network.</p>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead><tr><th>Model</th><th>What is iterated</th><th>When it stops</th><th>Local update</th></tr></thead>
+          <tbody>
+            <tr><td>ACT-RNN, PonderNet</td><td>recurrent hidden state</td><td>learned halting unit</td><td>no</td></tr>
+            <tr><td>Universal Transformer</td><td>one block over all token states</td><td>ACT, per position</td><td>no</td></tr>
+            <tr><td>Looped transformer</td><td>one block over the residual stream</td><td>fixed, or set per input</td><td>no</td></tr>
+            <tr><td>Recurrent-depth LM</td><td>a latent block</td><td>chosen at test time</td><td>no</td></tr>
+            <tr><td>HRM, TRM</td><td>small networks on a latent state</td><td>learned halting</td><td>no</td></tr>
+            <tr><td>Neural GPU</td><td>convolutional GRU on a grid</td><td>steps = input length</td><td>yes</td></tr>
+            <tr><td>Neural CA, NCPU</td><td>neural rule on every cell</td><td>fixed number of steps</td><td>yes</td></tr>
+            <tr><td>Emergent Models</td><td>any local rule on the substrate state</td><td>halting condition on the state</td><td>usually</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <p>Emergent Models are the minimal end of this list<sup>[<a href="#ref-em">16</a>]</sup>: a rule of tens of parameters, the program inside the state, and halting decided by the state itself. In EM43 the number of steps grows with the input, also beyond the training range, without being told to:</p>
+      </div>
+      <figure class="figure wide"><canvas data-viz="act" style="height:240px" role="img" aria-label="EM43 halting time against input size for five tasks"></canvas><figcaption><b>Adaptive computation in EM43.</b> Steps until halting against the input x for the five learned models (x + 1, 2x, x mod 4, round(x/3), x·(1 + x mod 2)). The shaded band is the training range.</figcaption></figure>
+
+      <section class="hypothesis" id="h1">
+        <p class="label">H1 · iteration</p>
+        <h3>Iteration is what enables extrapolation</h3>
+        <p>Applying one update rule an input-dependent number of times lets a model represent rules that hold beyond the training range. A single forward pass of fixed depth can only interpolate within it. The looped-transformer and recurrent-network results above are consistent with this; none isolates it.</p>
+        <p><b>Test.</b> Same architecture and parameter count, fixed depth against looped with adaptive halting. Arithmetic and string tasks; accuracy as a function of input length beyond training.</p>
+      </section>
+
+      <section class="hypothesis" id="h2">
+        <p class="label">H2 · parameters per unit of time</p>
+        <h3>The ratio q = N<sub>params</sub> / T̄ trades generalisation against trainability</h3>
+        <p>N<sub>params</sub> is the size of the model in bits; T̄ is the mean number of update steps per prediction. Low q forces a short description run for a long time, which favours compressed, rule-like solutions. It also makes search harder: each parameter is reused at every step, so small changes compound and the landscape becomes rugged. Large feed-forward networks are the high-q limit: all parameters, no iteration.</p>
+        <p><b>Test.</b> On EM43 and LU-machine tasks, and on looped transformers, sweep program or model size and time budget. Measure extrapolation accuracy and search cost (evaluations until the first exact solution). Prediction: as q falls, both rise.</p>
+      </section>
+
+      <section class="hypothesis" id="h3">
+        <p class="label">H3 · locality</p>
+        <h3>Locality is an inductive bias separate from iteration</h3>
+        <p>A rule that only sees neighbouring cells helps length generalisation on tasks with local structure and hurts tasks that must move information across the whole input. Early evidence: in <a href="ncpu-em.html">NCPU-EM-1D</a>, copy, shifts and increment stay near 100% at 26 bits after training on 16, while reverse falls to 1%. The Neural GPU is local and generalises on addition and multiplication, so locality alone is not the obstacle; what the rule must learn is.</p>
+        <p><b>Test.</b> Looped transformers with sliding-window attention against global attention, both with adaptive halting, on the same task set.</p>
+      </section>
+
+      <section class="hypothesis" id="h4">
+        <p class="label">H4 · storage and computation</p>
+        <h3>Facts and procedures want different models</h3>
+        <p>Factual knowledge is largely incompressible and needs storage capacity; procedures are compressible. Large models suit retrieval, small iterated models suit procedures. One architecture to test: a large model that delegates procedure-like subproblems to a small, iterated core.</p>
+        <p><b>Test.</b> Tasks that mix retrieval with multi-step computation, comparing a single model against model plus iterated core at equal compute.</p>
+      </section>
+
+      <div class="prose">
+        <h2 id="methods">Methods in development</h2>
+        <ul>
+          <li><b>Evolution strategies for training.</b> Black-box optimisation where gradients through long loops are unstable or unavailable. A hybrid splits the work: gradients for the rule, evolutionary search for programs and halting.</li>
+          <li><b>Search on rugged landscapes.</b> Neutral drift, quality-diversity search over behavioural descriptors (halting time, space used), and library learning that reuses previously found programs as building blocks.</li>
+          <li><b>A generalisation signal without test data.</b> Among programs that fit the training set exactly, prefer those whose space-time trajectories compress best. Testable now on EM43 and Game of Life tasks where only some exact fits extrapolate.</li>
+          <li><b>Parallel evaluation.</b> Candidate programs are independent simulations, so search maps directly onto GPUs. See <a href="parallel-hardware.html">Local rules on parallel hardware</a>.</li>
+        </ul>
+        <p>If you work on related questions, or want to test one of these hypotheses with us, write to <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>.</p>
+
+        <h2 id="references">References</h2>
+        <ol class="refs">
+          <li id="ref-graves">A. Graves. Adaptive Computation Time for Recurrent Neural Networks. 2016. <a href="https://arxiv.org/abs/1603.08983">arxiv.org/abs/1603.08983</a></li>
+          <li id="ref-ut">M. Dehghani, S. Gouws, O. Vinyals, J. Uszkoreit, Ł. Kaiser. Universal Transformers. ICLR 2019. <a href="https://arxiv.org/abs/1807.03819">arxiv.org/abs/1807.03819</a></li>
+          <li id="ref-ponder">A. Banino, J. Balaguer, C. Blundell. PonderNet: Learning to Ponder. 2021. <a href="https://arxiv.org/abs/2107.05407">arxiv.org/abs/2107.05407</a></li>
+          <li id="ref-ngpu">Ł. Kaiser, I. Sutskever. Neural GPUs Learn Algorithms. ICLR 2016. <a href="https://arxiv.org/abs/1511.08228">arxiv.org/abs/1511.08228</a></li>
+          <li id="ref-easyhard">A. Schwarzschild et al. Can You Learn an Algorithm? Generalizing from Easy to Hard Problems with Recurrent Networks. NeurIPS 2021. <a href="https://arxiv.org/abs/2106.04537">arxiv.org/abs/2106.04537</a></li>
+          <li id="ref-bansal">A. Bansal et al. End-to-end Algorithm Synthesis with Recurrent Networks: Logical Extrapolation Without Overthinking. NeurIPS 2022. <a href="https://arxiv.org/abs/2202.05826">arxiv.org/abs/2202.05826</a></li>
+          <li id="ref-giannou">A. Giannou et al. Looped Transformers as Programmable Computers. ICML 2023. <a href="https://arxiv.org/abs/2301.13196">arxiv.org/abs/2301.13196</a></li>
+          <li id="ref-yang">L. Yang, K. Lee, R. Nowak, D. Papailiopoulos. Looped Transformers are Better at Learning Learning Algorithms. ICLR 2024. <a href="https://arxiv.org/abs/2311.12424">arxiv.org/abs/2311.12424</a></li>
+          <li id="ref-fan">Y. Fan, Y. Du, K. Ramchandran, K. Lee. Looped Transformers for Length Generalization. 2024. <a href="https://arxiv.org/abs/2409.15647">arxiv.org/abs/2409.15647</a></li>
+          <li id="ref-saunshi">N. Saunshi et al. Reasoning with Latent Thoughts: On the Power of Looped Transformers. ICLR 2025. <a href="https://arxiv.org/abs/2502.17416">arxiv.org/abs/2502.17416</a></li>
+          <li id="ref-geiping">J. Geiping et al. Scaling up Test-Time Compute with Latent Reasoning: A Recurrent Depth Approach. 2025. <a href="https://arxiv.org/abs/2502.05171">arxiv.org/abs/2502.05171</a></li>
+          <li id="ref-hrm">G. Wang et al. Hierarchical Reasoning Model. 2025. <a href="https://arxiv.org/abs/2506.21734">arxiv.org/abs/2506.21734</a></li>
+          <li id="ref-trm">A. Jolicoeur-Martineau. Less is More: Recursive Reasoning with Tiny Networks. 2025. <a href="https://arxiv.org/abs/2510.04871">arxiv.org/abs/2510.04871</a></li>
+          <li id="ref-nca">A. Mordvintsev, E. Randazzo, E. Niklasson, M. Levin. Growing Neural Cellular Automata. Distill, 2020. <a href="https://doi.org/10.23915/distill.00023">doi.org/10.23915/distill.00023</a></li>
+          <li id="ref-ncpu">I. Zhechev, P. Walas. Self-organized boolean computation (NCPU). ALIFE 2026. <a href="https://ncpu.pages.dev/">ncpu.pages.dev/</a></li>
+          <li id="ref-em">G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy. Emergent Models: Intelligence from Tiny Substrates. 2026. <a href="https://arxiv.org/abs/2608.14019">arxiv.org/abs/2608.14019</a></li>
+        </ol>
+      </div>
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="index.html">← All research</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
+      <nav aria-label="Footer">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
+        <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
+      </nav>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
+    </div>
+  </footer>
+
+  <script src="../viz.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

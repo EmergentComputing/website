@@ -1,3 +1,8 @@
 http://emergentcomputing.org/* https://emergentcomputing.org/:splat 301!
 http://www.emergentcomputing.org/* https://emergentcomputing.org/:splat 301!
 https://www.emergentcomputing.org/* https://emergentcomputing.org/:splat 301!
+/emergent-models.html     /research/emergent-models.html     301
+/reasoning-models.html    /research/reasoning-models.html    301
+/applied-research.html    /research/applied-research.html    301
+/blog                     /research/                         301
+/blog/*                   /research/:splat                   301

@@ -10,30 +10,33 @@ Pushing to the deployed branch publishes the site (currently Netlify).
 ## Structure
 
 ```text
-index.html                 home: approach, research lines, publications, code, writing, people, contact
-emergent-models.html       framework, theory, experiments, machines, neural CA, hardware directions
-reasoning-models.html      hypotheses (no results yet)
-applied-research.html      collaborations
-blog/index.html            list of notes
-blog/<slug>.html           one file per note
-blog/_template.html        starting point for a new note (noindex)
-style.css                  all styles; colour tokens at the top (light), dark overrides below them
-viz.js                     model engine: EM43, LUTM-6, CEM1D, elementary CA (all figures are computed)
-script.js                  light/dark toggle, interactive EM43 hero, figures (<canvas data-viz=...>), explorer, BibTeX copy
-images/team/               320×320 team photos
+index.html                          home: the lab, Emergent Models (live figures), research, publications, code, people, contact
+research/index.html                 research: pinned posts, then dated posts (newest first)
+research/emergent-models.html       pinned: framework, theory, experiments (EM43, Game of Life, CEM1D, CEM2D)
+research/lu-machines.html           pinned: LUTM-1, LUTM-6, LU-A
+research/ncpu-em.html               pinned: NCPU-EM (loads research/ncpu-model.js, the trained weights)
+research/<slug>.html                one file per post
+research/_template.html             starting point for a new post (noindex)
+style.css                           all styles; colour tokens at the top (light), dark overrides below them
+viz.js                              model engine: EM43, LUTM-6, CEM1D, CEM2D data, GoL-EM, LU-A, NCPU-EM-1D, sine MLP
+script.js                           light/dark toggle, EM43 hero, figures (<canvas data-viz=...>), explorer, BibTeX copy
+images/team/                        320×320 team photos
 sitemap.xml, robots.txt, llms.txt, 404.html, _redirects (Netlify only), .nojekyll (GitHub Pages)
 ```
 
-## Adding a note
+Old URLs (`/emergent-models.html`, `/reasoning-models.html`, `/applied-research.html`, `/blog/...`) redirect to
+`/research/` through `_redirects` on Netlify. On GitHub Pages these redirects do not exist.
 
-1. Copy `blog/_template.html` to `blog/<short-slug>.html`.
+## Adding a research post
+
+1. Copy `research/_template.html` to `research/<short-slug>.html`.
 2. Fill in every `TODO` (title, description, slug, dates, author, body) and delete the `noindex` line.
-3. Add an entry at the top of the list in `blog/index.html` and to its JSON-LD `blogPost` list.
-4. Update the "Writing" section in `index.html` (latest notes).
-5. Add a `<url>` entry to `sitemap.xml`.
-6. Commit and push.
+3. Add an entry at the top of the "Posts" list in `research/index.html` and to its JSON-LD `blogPost` list.
+4. Optionally list it under "Research" in `index.html`, and add a `<url>` entry to `sitemap.xml`.
+5. Commit and push.
 
-Figures: inline SVG, HTML/CSS or a small script. Put any image files in `images/blog/`.
+Figures: inline SVG, HTML/CSS, or `<canvas data-viz="name">` using a figure defined in `script.js`
+(static figures in `FIGS`, animated ones in `ANIM`). Put image files in `images/research/`.
 
 ## Local preview (Windows, PowerShell)
 
@@ -52,5 +55,5 @@ label untested ideas as hypotheses. No marketing language.
 ## Colours
 
 Brand: the logo's violet and sky blue. Data: EM43 cell colours (ink, red marker, blue halting, green origin).
-Research lines: `--c-em`, `--c-lutm`, `--c-nca`, `--c-reason`, `--c-hw`, used for accents on the home page
+Research lines: `--c-em`, `--c-lutm`, `--c-nca`, `--c-reason`, `--c-hw`, used for accents on pinned posts
 and in figures. All tokens are defined twice in `style.css` (light, then `html[data-mode="dark"]`).

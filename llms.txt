@@ -1,35 +1,39 @@
 # Emergent Computing
 
-> Emergent Computing is a research lab, founded in 2024, studying how computation emerges in simple, local, iterated dynamical systems (cellular automata, continuous media, small Turing machines) and how such computation can be found by search instead of designed.
+> Emergent Computing is a research lab, founded in 2024, exploring unconventional paths to general intelligence. It studies how computation and intelligence emerge from minimal rules under selection pressure: rules and programs of simple dynamical systems are evolved rather than designed, and judged first by whether they generalise beyond their training data. The main line of work is Emergent Models.
 
 ## Key facts
 
 - Papers (both by G. Bocchese, N. Giacobbo, E. Guichard, J. Wiles, A. Devireddy):
   - "Emergent Models: Intelligence from Tiny Substrates", arXiv:2608.14019 [cs.NE], August 2026. https://arxiv.org/abs/2608.14019
   - "Emergent Models: Machine Learning from Cellular Automata", Proceedings of the Artificial Life Conference 2026 (ALIFE 2026), MIT Press, doi:10.1162/ISAL.a.953; oral presentation, 18 August 2026. https://doi.org/10.1162/ISAL.a.953
+  - Code and live demos for the paper: https://emergentcomputing.github.io/em-paper/
 - An Emergent Model (EM) is a tuple M = (S, f, H, E, D, ⊕): state space, transition rule (usually local), halting condition, encoder, decoder, and an operator combining a program p with the encoded input. Prediction: y = D(f^T(p ⊕ E(x))), with T the first step at which H fires.
-- Training searches mainly over the initial state (the program), optionally the rule and interface, with evolutionary algorithms.
+- Training searches mainly over the initial state (the program), optionally the rule and interface, with genetic algorithms.
 - Latent universality (theorem): some EMs with fixed rule, halting condition and interface compute every partial computable function on binary strings by varying only a finite program. Existence only; no claim about search efficiency.
-- EM43, a 1D four-state cellular automaton with 70 parameters (140 bits), trained on x in [0, 30], computes x+1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2) exactly on [30, 1000]. Two-input multiplication was not learned.
-- Other experiments: Game of Life with fixed rule learns x+k (random search about as good as a GA); a continuous 1D lattice with 3 trainable coefficients reaches 735 ± 107 of 800 on CartPole; a continuous 2D field adapts online to food/poison phases (meta-score 0.71; a dense RNN baseline 0.82).
+- EM43, a 1D four-state cellular automaton with 70 parameters (60 rule entries + 10 program cells, 140 bits), trained on x in [0, 30], computes x+1, 2x, x mod 4, round(x/3) and x·(1 + x mod 2) exactly on [30, 1000] in every run. Two-input multiplication was not learned.
+- Other experiments: Game of Life with fixed rule learns x+k (random search about as good as a GA); a continuous 1D lattice with 3 trainable coefficients reaches 735 ± 107 of 800 on CartPole; a continuous 2D field adapts online to food/poison phases (meta-score 0.71; a memory RNN baseline 0.82).
 - The paper describes itself as foundational: it does not propose a competitive architecture.
-- Ongoing work: LUTM-1 and LUTM-6 (small Turing machines with a fixed input/output interface, candidates for latent universality, not formally verified); LU-A (ten-operation language); NCPU-EM (neural cellular automata with one shared rule and a learned program per task, building on NCPU by Iliya Zhechev and Piotr Walas).
-- Reasoning-model work is at the hypothesis stage: iteration and extrapolation, the ratio of parameters to computation time (q = N_params / T), locality as an inductive bias, evolution strategies and search methods. No results yet.
+- Ongoing work: latent-universal machines LUTM-1, LUTM-6 and LU-A (fixed rule and interface, only the program changes; universality argued but not formally verified); NCPU-EM (neural cellular automata with one shared rule and a learned program per task, building on NCPU by Iliya Zhechev and Piotr Walas, ALIFE 2026).
+- Directions at the hypothesis stage: iteration and reasoning (looped transformers, adaptive computation time, small recursive networks; the ratio q = N_params / T; locality as an inductive bias); local rules on parallel and analog hardware. No results yet.
 
 ## People
 
 - Giacomo Bocchese: founder; also Wolfram Institute.
-- Nicola Giacobbo: co-founder, research.
+- Nicola Giacobbo: co-founder, research; postdoctoral researcher, University of Padova (astrophysics). https://scholar.google.com/citations?user=yzQ1tT8AAAAJ
 - Akshaj Devireddy: affiliate researcher; Wolfram Institute.
 - Mattia Fioranzato: affiliate developer.
 
 ## Pages
 
-- [Home](https://emergentcomputing.org/): overview, research lines with status, publications, code, people, contact.
-- [Emergent Models](https://emergentcomputing.org/emergent-models.html): framework, theorem, experiments with numbers and limitations, machines, neural CA, hardware directions, open questions, BibTeX.
-- [Reasoning models](https://emergentcomputing.org/reasoning-models.html): hypotheses and planned tests.
-- [Applied research](https://emergentcomputing.org/applied-research.html): collaboration scope and method.
-- [Writing](https://emergentcomputing.org/blog/index.html): notes.
+- [Home](https://emergentcomputing.org/): the lab, Emergent Models explained with live figures, research, publications, code, people, contact.
+- [Research](https://emergentcomputing.org/research/): pinned posts and dated notes.
+- [Emergent Models](https://emergentcomputing.org/research/emergent-models.html): framework, theorem, experiments with numbers and limitations, BibTeX.
+- [Latent-universal machines](https://emergentcomputing.org/research/lu-machines.html): LUTM-1, LUTM-6, LU-A.
+- [NCPU-EM](https://emergentcomputing.org/research/ncpu-em.html): neural cellular automata with programs.
+- [Iteration and reasoning](https://emergentcomputing.org/research/reasoning-models.html): related models and hypotheses.
+- [Local rules on parallel hardware](https://emergentcomputing.org/research/parallel-hardware.html): GPU search, locality bound for cellular arithmetic, analog media.
+- [Applied research](https://emergentcomputing.org/research/applied-research.html): collaboration scope and method.
 
 ## Code
 
@@ -39,4 +43,4 @@
 
 ## Contact
 
-info@emergentcomputing.org
+info@emergentcomputing.org · https://discord.gg/srwdnJgEMH

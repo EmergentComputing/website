@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var m;try{m=localStorage.getItem("ec-mode");}catch(e){}if(m!=="light"&&m!=="dark"){m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.mode=m;})();</script>
+  <title>NCPU-EM — Emergent Computing</title>
+  <meta name="description" content="Neural cellular automata with one shared rule and a learned program per task, building on NCPU by Zhechev and Walas. Model, live trace, results and failure modes.">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/research/ncpu-em.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Emergent Computing">
+  <meta property="og:url" content="https://emergentcomputing.org/research/ncpu-em.html">
+  <meta property="og:title" content="NCPU-EM">
+  <meta property="og:description" content="Neural cellular automata with one shared rule and a learned program per task, building on NCPU by Zhechev and Walas. Model, live trace, results and failure modes.">
+  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
+  <meta property="article:published_time" content="2026-10-27">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+  <link rel="stylesheet" href="../style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "NCPU-EM: one neural rule, a program per task",
+  "description": "Neural cellular automata with one shared rule and a learned program per task, building on NCPU by Zhechev and Walas. Model, live trace, results and failure modes.",
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27",
+  "url": "https://emergentcomputing.org/research/ncpu-em.html",
+  "mainEntityOfPage": "https://emergentcomputing.org/research/ncpu-em.html",
+  "author": {
+    "@type": "ResearchOrganization",
+    "@id": "https://emergentcomputing.org/#organization",
+    "name": "Emergent Computing"
+  },
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
+  },
+  "about": [
+    "Neural cellular automata",
+    "Emergent Models",
+    "Length generalisation"
+  ],
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Self-organized boolean computation",
+      "url": "https://ncpu.pages.dev/",
+      "author": [
+        {
+          "@type": "Person",
+          "name": "Iliya Zhechev"
+        },
+        {
+          "@type": "Person",
+          "name": "Piotr Walas"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#code">Code</a>
+        <a href="../index.html#people">People</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <button class="mode-toggle" type="button" data-mode-toggle aria-label="Switch colour mode"><svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="kicker">Pinned · <span class="status prog">in progress</span></p>
+        <h1>NCPU-EM</h1>
+        <p class="lede">Neural cellular automata with one shared rule and a learned program per task: a differentiable route to the regime where the rule is fixed and only the program changes.</p>
+        <nav class="toc" aria-label="On this page">
+          <a href="#origin">Origin</a>
+          <a href="#model">The model</a>
+          <a href="#results">Results</a>
+          <a href="#failures">Where it fails</a>
+          <a href="#next">Next steps and code</a>
+        </nav>
+      </header>
+
+      <div class="prose">
+        <h2 id="origin">Origin</h2>
+        <p>This line builds on <b>NCPU</b>, <a href="https://ncpu.pages.dev/"><i>Self-organized boolean computation</i></a>, by Iliya Zhechev (Sofia University) and Piotr Walas (Warsaw University of Technology), presented at ALIFE 2026 (<a href="https://github.com/ichko/ncpu">code</a>). NCPU trains neural cellular automata to carry out boolean computation. Related work: Béna and Faldor, <a href="https://arxiv.org/abs/2505.13058"><i>A Path to Universal Neural Cellular Automata</i></a> (2025), and the growing neural cellular automata of Mordvintsev et al. (<a href="https://doi.org/10.23915/distill.00023">Distill, 2020</a>).</p>
+        <p>NCPU-EM recasts the setting as an Emergent Model: the network is the local rule, shared by all cells and all tasks; a few channels of every cell hold a <i>program</i>, learned separately for each task. One rule, many programs.</p>
+
+        <h2 id="model">The model: NCPU-EM-1D</h2>
+        <ul>
+          <li><b>Substrate.</b> A row of cells with 13 real-valued channels: 5 program channels, 1 input/output channel, 7 hidden channels.</li>
+          <li><b>Rule.</b> A radius-1 convolution over the 13 channels, a ReLU layer of 128 units, and an additive update of all channels with a small leak and clipping; all cells update at once. 6,784 parameters, shared by every task.</li>
+          <li><b>Program.</b> Five numbers per task, written into every cell.</li>
+          <li><b>Interface.</b> Input bits are written into the input/output channel as ±1. After a fixed number of steps, each cell reads as 1 above +1/3, as 0 below −1/3; the output is the run of decided cells from the left.</li>
+          <li><b>Training.</b> Rule and programs together, by gradient descent, on strings up to 16 bits; seven tasks: copy, shift left, shift right, Gray encoding, increment, prefix XOR, reverse.</li>
+        </ul>
+      </div>
+
+      <figure class="figure wide"><canvas data-viz="ncpu" data-model="ncpu-model.js" data-runs="reverse:11111100:reverse;increment:10110111:x + 1" data-show="48" style="height:440px" role="img" aria-label="NCPU-EM-1D computing reverse and increment with one shared neural rule"></canvas><figcaption><b>One rule, two programs.</b> The input/output channel of NCPU-EM-1D for the first 48 steps and at step 120, running the reverse program on 11111100 and the increment program on 10110111. Red positive, blue negative. Computed in your browser with the trained weights from the <a href="https://bocchesegiacomo.github.io/ncpu-em-1d-demo/">demo</a>.</figcaption></figure>
+
+      <div class="prose">
+        <h2 id="results">Results</h2>
+        <p>Accuracy per bit on strings longer than any seen in training (up to 16 bits), synchronous updates:</p>
+      </div>
+      <div class="table-scroll" style="max-width:680px">
+        <table class="data">
+          <thead><tr><th>Task</th><th>19 bits</th><th>21 bits</th><th>26 bits</th></tr></thead>
+          <tbody>
+            <tr><td>copy, shift left, shift right, Gray encode</td><td class="num">100%</td><td class="num">100%</td><td class="num">100%</td></tr>
+            <tr><td>increment</td><td class="num">99.8%</td><td class="num">100%</td><td class="num">99.8%</td></tr>
+            <tr><td>prefix XOR</td><td class="num">95.9%</td><td class="num">85.4%</td><td class="num">31.4%</td></tr>
+            <tr><td>reverse</td><td class="num">99.7%</td><td class="num">87.9%</td><td class="num">1.1%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h2 id="failures">Where it fails</h2>
+        <p>Copy, shifts and Gray encoding need only information from a cell's immediate neighbourhood. Increment needs a carry, which travels only as far as the run of trailing ones. Prefix XOR and reverse need information carried across the whole string. A local rule can do that given enough steps, but it has to learn a transport mechanism that also works at lengths it never saw, and here it did not. This is the failure mode a local substrate should be expected to show, and a useful one to study: it separates the cost of locality from the cost of iteration (see H3 in <a href="reasoning-models.html#h3">Iteration and reasoning</a>).</p>
+
+        <h2 id="next">Next steps and code</h2>
+        <ul>
+          <li>Freeze a rule trained on many tasks and learn only programs for new ones: the latent-universal regime in practice.</li>
+          <li>Train with random asynchronous updates and noise, to measure robustness, a property that matters for physical substrates.</li>
+          <li>Two-dimensional substrates with program tiles.</li>
+        </ul>
+        <p>Code: <a href="https://github.com/BoccheseGiacomo/ncpu-em-1d">NCPU-EM-1D</a> (<a href="https://bocchesegiacomo.github.io/ncpu-em-1d-demo/">demo</a>), <a href="https://github.com/BoccheseGiacomo/ncpu-em-2d">NCPU-EM-2D</a> (program tiles on a 2D grid), <a href="https://github.com/BoccheseGiacomo/ncpu-computer">ncpu-computer</a> (single-task baselines), <a href="https://github.com/BoccheseGiacomo/ncpu-simplified">ncpu-simplified</a> (binary addition with single-cell inputs and outputs).</p>
+      </div>
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="index.html">← All research</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
+      <nav aria-label="Footer">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
+        <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
+      </nav>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
+    </div>
+  </footer>
+
+  <script src="../viz.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

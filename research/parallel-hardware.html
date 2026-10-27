@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>(function(){var m;try{m=localStorage.getItem("ec-mode");}catch(e){}if(m!=="light"&&m!=="dark"){m=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.dataset.mode=m;})();</script>
+  <title>Local rules on parallel hardware — Emergent Computing</title>
+  <meta name="description" content="Search on GPUs, cellular hardware for multiplication and the light-cone limit on latency, and analog media. Hypotheses, with the known bounds and constructions.">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/research/parallel-hardware.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Emergent Computing">
+  <meta property="og:url" content="https://emergentcomputing.org/research/parallel-hardware.html">
+  <meta property="og:title" content="Local rules on parallel hardware">
+  <meta property="og:description" content="Search on GPUs, cellular hardware for multiplication and the light-cone limit on latency, and analog media. Hypotheses, with the known bounds and constructions.">
+  <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
+  <meta property="article:published_time" content="2026-10-27">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+  <link rel="stylesheet" href="../style.css">
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Local rules on parallel hardware",
+  "description": "Search on GPUs, cellular hardware for multiplication and the light-cone limit on latency, and analog media. Hypotheses, with the known bounds and constructions.",
+  "datePublished": "2026-10-27",
+  "dateModified": "2026-10-27",
+  "url": "https://emergentcomputing.org/research/parallel-hardware.html",
+  "mainEntityOfPage": "https://emergentcomputing.org/research/parallel-hardware.html",
+  "author": {
+    "@type": "ResearchOrganization",
+    "@id": "https://emergentcomputing.org/#organization",
+    "name": "Emergent Computing"
+  },
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
+  },
+  "about": [
+    "Cellular automata",
+    "Parallel computing",
+    "Analog computing",
+    "Multiplication",
+    "GPU"
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="../index.html#code">Code</a>
+        <a href="../index.html#people">People</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+      <button class="mode-toggle" type="button" data-mode-toggle aria-label="Switch colour mode"><svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6L13 13M3 13l1.4-1.4M11.6 4.4L13 3"/></svg><svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="kicker">Direction · <span class="status hyp">hypotheses</span></p>
+        <h1>Local rules on parallel hardware</h1>
+        <p class="lede">A local rule needs only a cell and its neighbours, so it maps onto parallel hardware with no instruction stream. Three directions: faster search on GPUs, cellular hardware for arithmetic, and analog media. None is tested yet.</p>
+        <p class="post-meta"><time datetime="2026-10-27">27 October 2026</time> · Emergent Computing</p>
+      </header>
+
+      <div class="prose">
+        <h2 id="gpu">Search on GPUs</h2>
+        <p>Population-based search evaluates many candidate programs on the same inputs: a batch of independent simulations, which is the workload GPUs are built for. LUTM-1 and LUTM-6 already run candidates in parallel on CUDA. Bit-packed cellular automata, two bits per EM43 cell, would put 32 cells in a 64-bit word and update them with a few logical operations. Faster evaluation does not fix a rugged landscape, but it changes which search methods are affordable.</p>
+
+        <h2 id="arithmetic">Cellular hardware for arithmetic</h2>
+        <p>The direction: hardware in which an operation such as multiplication is carried out by a grid of identical cells, each applying one local rule, with constant work per cell per step. Locality sets a limit on latency. A cell's state after t steps depends only on inputs within distance r·t, where r is the rule radius. Bit n − 1 of an n-bit product a·b, and every bit above it, depends on every bit of both inputs, so it cannot be correct until its backward light cone covers all of them:</p>
+      </div>
+      <figure class="figure wide"><canvas data-viz="locality" data-n="12" style="height:360px;--accent:var(--c-hw)" role="img" aria-label="Backward light cone of an output bit of a 12-bit product on a one-dimensional array"></canvas><figcaption><b>Locality bound.</b> Two 12-bit inputs on a one-dimensional array of radius-1 cells. Bit 11 of the product, read at the last cell of a, depends on all 24 input cells; its backward light cone (shaded) covers them only from step 12 on. No local rule can produce it earlier.</figcaption></figure>
+      <div class="prose">
+        <ul>
+          <li><b>One dimension: linear time, and it is achievable.</b> Atrubin's real-time multiplier (1965) is a one-dimensional array of identical finite-state cells that outputs one product bit per step as the operands stream in. The Neural GPU learned binary multiplication with a local convolutional update applied for a number of steps equal to the input length, so in linear time with local operations, and generalised from 20-bit training numbers to much longer ones (Kaiser and Sutskever, 2016).</li>
+          <li><b>k dimensions: latency at least of order n<sup>1/k</sup></b>, because n input bits occupy a region of diameter about n<sup>1/k</sup>. For chip layouts, Brent and Kung proved that the area A and time T of any n-bit multiplier satisfy AT² = Ω(n²) (1981).</li>
+          <li><b>Constant latency needs non-local summation.</b> Multiplication is in TC⁰: constant-depth circuits of threshold gates with unbounded fan-in compute it. Physically, that means summing many signals at once, as currents or light, which trades time for precision and fan-in.</li>
+        </ul>
+        <p>So the realistic target is not O(1) latency but constant work per cell, high throughput and latency close to the light-cone bound. The open question for us is whether search can find such rules, rather than designing them, and whether the rules found are robust.</p>
+
+        <h2 id="analog">Analog media</h2>
+        <p>CEM1D and CEM2D are continuous substrates. With real-valued cells, the same framework describes analog computation, but the paper gives no guarantee there: latent universality is proved for discrete models. The deciding property for a physical implementation is tolerance to noise and to unsynchronised updates. Training neural cellular automata with random asynchronous updates, as in <a href="ncpu-em.html">NCPU-EM</a>, is a first way to measure it.</p>
+
+        <h2 id="references">References</h2>
+        <ol class="refs">
+          <li>S. J. Atrubin. A one-dimensional real-time iterative multiplier. <i>IEEE Transactions on Electronic Computers</i> EC-14(3):394–399, 1965.</li>
+          <li>Ł. Kaiser, I. Sutskever. Neural GPUs Learn Algorithms. ICLR 2016. <a href="https://arxiv.org/abs/1511.08228">arxiv.org/abs/1511.08228</a></li>
+          <li>R. P. Brent, H. T. Kung. The area-time complexity of binary multiplication. <i>Journal of the ACM</i> 28(3):521–534, 1981.</li>
+          <li>G. Bocchese et al. Emergent Models: Intelligence from Tiny Substrates. 2026. <a href="https://arxiv.org/abs/2608.14019">arxiv.org/abs/2608.14019</a></li>
+        </ol>
+      </div>
+      <nav class="post-nav" aria-label="Post navigation">
+        <a href="index.html">← All research</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
+      <nav aria-label="Footer">
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
+        <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
+        <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
+      </nav>
+      <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
+    </div>
+  </footer>
+
+  <script src="../viz.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

@@ -1,27 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://emergentcomputing.org/</loc>
-    <lastmod>2026-10-26</lastmod>
-  </url>
-  <url>
-    <loc>https://emergentcomputing.org/emergent-models.html</loc>
-    <lastmod>2026-10-26</lastmod>
-  </url>
-  <url>
-    <loc>https://emergentcomputing.org/reasoning-models.html</loc>
-    <lastmod>2026-10-26</lastmod>
-  </url>
-  <url>
-    <loc>https://emergentcomputing.org/applied-research.html</loc>
-    <lastmod>2026-10-26</lastmod>
-  </url>
-  <url>
-    <loc>https://emergentcomputing.org/blog/</loc>
-    <lastmod>2026-10-26</lastmod>
-  </url>
-  <url>
-    <loc>https://emergentcomputing.org/blog/emergent-models-what-the-paper-shows.html</loc>
-    <lastmod>2026-10-26</lastmod>
-  </url>
+  <url><loc>https://emergentcomputing.org/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/emergent-models.html</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/lu-machines.html</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/ncpu-em.html</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/reasoning-models.html</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/parallel-hardware.html</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/emergent-models-what-the-paper-shows.html</loc><lastmod>2026-10-26</lastmod></url>
+  <url><loc>https://emergentcomputing.org/research/applied-research.html</loc><lastmod>2026-10-27</lastmod></url>
 </urlset>

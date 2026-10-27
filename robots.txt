@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /blog/_template.html
+Disallow: /research/_template.html
 
 Sitemap: https://emergentcomputing.org/sitemap.xml

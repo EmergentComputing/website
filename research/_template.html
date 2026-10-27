@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <!--
   Post template. To publish a post:
-  1. Copy this file to blog/<short-slug>.html (lowercase, hyphens).
-  2. Replace every TODO below: title, description, slug, dates, body.
-  3. Delete the "noindex" line.
-  4. Add the post at the top of the list in blog/index.html (and its JSON-LD blogPost list),
-     update the "Writing" section in index.html, and add a <url> to sitemap.xml.
+  1. Copy this file to research/<short-slug>.html (lowercase, hyphens).
+  2. Replace every TODO: title, description, slug, dates, author, body. Delete the "noindex" line.
+  3. Add the post at the top of the "Posts" list in research/index.html and to its JSON-LD blogPost list.
+  4. Optionally list it under "Research" in index.html (latest posts), and add a <url> to sitemap.xml.
   5. Commit and push.
-  Figures: use inline SVG, HTML/CSS or a small script; keep images in images/blog/.
+  Figures: inline SVG, HTML/CSS, or a <canvas data-viz="..."> figure from script.js. Image files go in images/research/.
 -->
 <html lang="en">
 <head>
@@ -17,16 +16,16 @@
   <meta name="robots" content="noindex">
   <title>TODO title — Emergent Computing</title>
   <meta name="description" content="TODO one-sentence summary (under 160 characters).">
-  <meta name="author" content="TODO author">
-  <link rel="canonical" href="https://emergentcomputing.org/blog/TODO-slug.html">
+  <meta name="author" content="Emergent Computing">
+  <link rel="canonical" href="https://emergentcomputing.org/research/TODO-slug.html">
 
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Emergent Computing">
-  <meta property="og:url" content="https://emergentcomputing.org/blog/TODO-slug.html">
+  <meta property="og:url" content="https://emergentcomputing.org/research/TODO-slug.html">
   <meta property="og:title" content="TODO title">
-  <meta property="og:description" content="TODO one-sentence summary.">
+  <meta property="og:description" content="TODO one-sentence summary (under 160 characters).">
   <meta property="og:image" content="https://emergentcomputing.org/images/logo.png">
-  <meta property="article:published_time" content="TODO YYYY-MM-DD">
+  <meta property="article:published_time" content="TODO-YYYY-MM-DD">
   <meta name="twitter:card" content="summary">
 
   <link rel="icon" type="image/png" href="../images/logo.png">
@@ -36,18 +35,23 @@
   <link rel="stylesheet" href="../style.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "TODO title",
-    "description": "TODO one-sentence summary.",
-    "datePublished": "TODO YYYY-MM-DD",
-    "dateModified": "TODO YYYY-MM-DD",
-    "url": "https://emergentcomputing.org/blog/TODO-slug.html",
-    "mainEntityOfPage": "https://emergentcomputing.org/blog/TODO-slug.html",
-    "author": { "@type": "Person", "name": "TODO author" },
-    "publisher": { "@id": "https://emergentcomputing.org/#organization" }
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "TODO title",
+  "description": "TODO one-sentence summary.",
+  "datePublished": "TODO-YYYY-MM-DD",
+  "dateModified": "TODO-YYYY-MM-DD",
+  "url": "https://emergentcomputing.org/research/TODO-slug.html",
+  "mainEntityOfPage": "https://emergentcomputing.org/research/TODO-slug.html",
+  "author": {
+    "@type": "Person",
+    "name": "TODO author"
+  },
+  "publisher": {
+    "@id": "https://emergentcomputing.org/#organization"
   }
+}
   </script>
 </head>
 <body>
@@ -57,10 +61,10 @@
     <div class="wrap">
       <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30">Emergent Computing</a>
       <nav class="nav" aria-label="Main">
-        <a href="../index.html#research">Research</a>
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html" aria-current="page">Research</a>
         <a href="../index.html#publications">Publications</a>
         <a href="../index.html#code">Code</a>
-        <a href="../blog/index.html" aria-current="page">Writing</a>
         <a href="../index.html#people">People</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
@@ -71,9 +75,9 @@
   <main id="main">
     <article class="wrap">
       <header class="post-head">
-        <p class="kicker">Note</p>
+        <p class="kicker">TODO note · direction · result</p>
         <h1>TODO title</h1>
-        <p class="post-meta"><time datetime="TODO YYYY-MM-DD">TODO date</time> · TODO author</p>
+        <p class="post-meta"><time datetime="TODO-YYYY-MM-DD">TODO date</time> · TODO author</p>
       </header>
 
       <div class="post-body prose">
@@ -82,18 +86,15 @@
         <h2>Section heading</h2>
         <p>Body text. Inline <code>code</code>, <a href="#">links</a>, <b>bold</b>.</p>
         <div class="math">y = D(f^T(p ⊕ E(x)))</div>
-        <pre><code>code block</code></pre>
 
         <figure class="figure">
-          <div class="figure-body">
-            <!-- inline SVG, canvas or HTML figure -->
-          </div>
-          <figcaption><b>Figure 1.</b> Caption: what is shown, and how it was produced.</figcaption>
+          <canvas data-viz="em43" data-task="mod4" data-x="40" style="height:260px" role="img" aria-label="TODO describe the figure"></canvas>
+          <figcaption><b>Figure 1.</b> What is shown, and how it was produced.</figcaption>
         </figure>
       </div>
 
       <nav class="post-nav" aria-label="Post navigation">
-        <a href="index.html">← All notes</a>
+        <a href="index.html">← All research</a>
       </nav>
     </article>
   </main>
@@ -102,11 +103,11 @@
     <div class="wrap">
       <a class="brand" href="../index.html"><img src="../images/logo.png" alt="" width="26" height="26">Emergent Computing</a>
       <nav aria-label="Footer">
-        <a href="../emergent-models.html">Emergent Models</a>
-        <a href="../reasoning-models.html">Reasoning models</a>
-        <a href="../applied-research.html">Applied research</a>
-        <a href="../blog/index.html">Writing</a>
+        <a href="../index.html#emergent-models">Emergent Models</a>
+        <a href="index.html">Research</a>
+        <a href="../index.html#publications">Publications</a>
         <a href="https://github.com/EmergentComputing">GitHub</a>
+        <a href="https://discord.gg/srwdnJgEMH">Discord</a>
         <a href="mailto:info@emergentcomputing.org">info@emergentcomputing.org</a>
       </nav>
       <p>© <span data-year>2026</span> Emergent Computing · No cookies, no analytics.</p>
