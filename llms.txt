@@ -1,6 +1,6 @@
 # Emergent Computing
 
-> Emergent Computing is a research lab, founded in 2024, exploring unconventional paths to general intelligence. It studies how computation and intelligence emerge from minimal rules under selection pressure: rules and programs of simple dynamical systems are evolved rather than designed, and judged first by whether they generalise beyond their training data. The main line of work is Emergent Models.
+> Emergent Computing is a research lab, founded in 2024, whose premise is that intelligence and computation should emerge from simple rules. It studies how computation and intelligence emerge from simple dynamical systems rather than from large, hand-designed architectures: algorithms and models are evolved rather than designed (at most a minimal core is designed), and judged first by whether they generalise beyond their training data. The main line of work is Emergent Models.
 
 ## Key facts
 
