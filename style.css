@@ -193,8 +193,12 @@ canvas[data-viz] { display: block; width: 100%; background: var(--fig); }
 .em-steps li.active { border-left-color: var(--brand); background: linear-gradient(90deg, color-mix(in srgb, var(--brand) 7%, transparent), transparent 70%); }
 .em-steps h3 { font-size: 24px; margin: 0 0 2px; }
 .em-steps h3::before { counter-increment: step; content: counter(step) "  "; font: 12px var(--mono); color: var(--ink-3); vertical-align: 4px; }
-.em-steps .formula { font: italic 17px var(--display); color: var(--ink); margin: 0 0 6px; }
-.formula .op { font: 14px var(--mono); font-style: normal; }
+.em-steps .formula { font: 400 19px/1.4 "STIX Two Text", var(--display); color: var(--ink); margin: 0 0 6px; }
+.formula i { font-style: italic; }
+.formula i + sub { margin-left: 0.06em; }
+.formula sub { font-size: 0.7em; line-height: 0; vertical-align: -0.28em; }
+.formula .op { width: 0.62em; height: 0.62em; vertical-align: -0.02em; margin: 0 0.12em; fill: none; stroke: currentColor; stroke-width: 0.8; }
+.formula .fn { margin-right: 0.1em; }
 .em-steps p { color: var(--ink-2); font-size: 15.5px; margin: 0; }
 .training-note { margin: 28px 0 0; max-width: 46em; color: var(--ink-2); }
 

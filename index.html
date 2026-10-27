@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;1,400&amp;text=spxEtfTHyDmin01%2B%3D%28%29%7B%7D%3A&amp;display=swap">
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
@@ -208,10 +209,10 @@
             <figcaption>EM43 computing 2x for x = 9, one row per time step.</figcaption>
           </figure>
           <ol class="em-steps">
-            <li data-phase="1"><h3>Encode</h3><p class="formula">s₀ = p <span class="op">⊕</span> E(x)</p><p>The input is written into the initial state next to a learned pattern, the <i>program</i> p. In EM43, x is a red cell placed x cells right of the origin (green line).</p></li>
-            <li data-phase="2"><h3>Iterate</h3><p class="formula">s<sub>t+1</sub> = f(s<sub>t</sub>)</p><p>A fixed local rule updates every cell from itself and its two neighbours, all cells at once. EM43's rule is a lookup table over the 64 possible neighbourhoods of a 4-state cell.</p></li>
-            <li data-phase="3"><h3>Halt</h3><p class="formula">T = min{t : H(s<sub>t</sub>) = 1}</p><p>The run stops at the first step where a condition on the whole state holds, so larger inputs can take more steps. EM43 stops when blue cells are at least half of the non-blank cells.</p></li>
-            <li data-phase="4"><h3>Decode</h3><p class="formula">y = D(s<sub>T</sub>)</p><p>The output is read from the final state. In EM43, y is the distance of the rightmost red cell from the origin.</p></li>
+            <li data-phase="1"><h3>Encode</h3><p class="formula"><i>s</i><sub>0</sub> = <i>p</i> <svg class="op" viewBox="0 0 10 10" role="img" aria-label="⊕"><circle cx="5" cy="5" r="4.3"/><path d="M5 0.7v8.6M0.7 5h8.6"/></svg> <i>E</i>(<i>x</i>)</p><p>The input is written into the initial state next to a learned pattern, the <i>program</i> p. In EM43, x is a red cell placed x cells right of the origin (green line).</p></li>
+            <li data-phase="2"><h3>Iterate</h3><p class="formula"><i>s</i><sub><i>t</i>+1</sub> = <i class="fn">f</i>(<i>s</i><sub><i>t</i></sub>)</p><p>A fixed local rule updates every cell from itself and its two neighbours, all cells at once. EM43's rule is a lookup table over the 64 possible neighbourhoods of a 4-state cell.</p></li>
+            <li data-phase="3"><h3>Halt</h3><p class="formula"><i>T</i> = min{<i>t</i> : <i>H</i>(<i>s</i><sub><i>t</i></sub>) = 1}</p><p>The run stops at the first step where a condition on the whole state holds, so larger inputs can take more steps. EM43 stops when blue cells are at least half of the non-blank cells.</p></li>
+            <li data-phase="4"><h3>Decode</h3><p class="formula"><i>y</i> = <i>D</i>(<i>s</i><sub><i>T</i></sub>)</p><p>The output is read from the final state. In EM43, y is the distance of the rightmost red cell from the origin.</p></li>
           </ol>
         </div>
         <p class="training-note"><b>Training.</b> In EM43, a genetic algorithm searches for the program, a finite portion of the initial state, and optionally the rule. Only the decoded output is scored; the dynamics in between are never supervised.</p>
