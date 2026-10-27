@@ -153,7 +153,7 @@
         <p>Feed-forward networks are limited in this sense. Universal approximation holds on compact domains; outside them, sigmoidal networks tend to constants and ReLU networks become linear, so functions like sin x, eˣ or x mod 4 cannot be represented globally. Iterated systems with unbounded memory and time can be Turing-complete, which is the maximal notion of global expressivity in the discrete setting. Universality says nothing about trainability, but it removes a hard ceiling.</p>
       </div>
 
-      <figure class="figure wide"><canvas data-viz="sine" style="height:300px" role="img" aria-label="A sigmoid network trained on sin x fits the training range and diverges outside it; the same network inside a loop matches sin x everywhere"></canvas><figcaption><b>Fixed depth against iteration.</b> Red: a sigmoid MLP (1–32–32–1) trained on sin x for 0 ≤ x ≤ 4π. Outside the training range it follows no rule. Blue: the same network inside the hand-written loop x ← x − 2π until x &lt; 2π. Dashed: sin x.</figcaption></figure>
+      <figure class="figure wide"><canvas data-viz="sine" style="height:300px" role="img" aria-label="A sigmoid network trained on sin x fits the training range and diverges outside it; a looped model matches sin x everywhere"></canvas><figcaption><b>Fixed depth against iteration.</b> Red: a sigmoid MLP (1–32–32–1) trained on sin x for 0 ≤ x ≤ 4π. Outside the training range it follows no rule. Blue: a looped model. Dashed: sin x.</figcaption></figure>
 
       <div class="prose">
         <h2 id="universality">Latent universality</h2>
@@ -226,7 +226,7 @@
         <p>Nineteen real-valued cells with the update <code>s<sub>j</sub> ← s<sub>j</sub> + 0.1 (a s<sub>j−1</sub> + b s<sub>j</sub> + c s<sub>j+1</sub> − γ s<sub>j</sub><sup>3</sup>)</code>, reflecting boundaries. Only the three coefficients and the 19-cell initial state are trained; the learned values are a = 0.796, b = −0.319, c = −1.628 with γ = 0.03. The four CartPole observations overwrite four cells; the sign of the centre cell pushes the cart left or right. The lattice runs 30 steps per control step and its state carries over to the next one.</p>
         <p>Result: 735 ± 107 out of 800 over 1000 new episodes (≈ 500 counts as solved). The learned rule hosts localised structures that carry values through the lattice. Leftward transport is stronger, so the angle inputs, right of the output cell, are used well and the cart position, left of it, less.</p>
       </div>
-      <div class="figure-row" style="grid-template-columns:1fr 1fr">
+      <div class="figure-row cols-2">
         <figure class="figure"><canvas data-viz="pulse" style="height:300px" role="img" aria-label="Two impulse pairs in the learned CEM1D lattice: one travels left, the other right"></canvas><figcaption><b>Transport.</b> Two impulse pairs under the learned rule, no inputs: opposite signs travel left, equal signs travel right.</figcaption></figure>
         <figure class="figure"><canvas data-viz="cem" style="height:300px" role="img" aria-label="CEM1D lattice over time with inputs written every 30 steps"></canvas><figcaption><b>Ports.</b> Random values written at the four input ports every 30 steps (vertical lines). Time runs left to right, cells top to bottom; red positive, blue negative.</figcaption></figure>
       </div>

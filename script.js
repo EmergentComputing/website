@@ -61,8 +61,12 @@
     ctx.strokeStyle = c.ink3; ctx.lineWidth = 0.6; ctx.strokeRect(bx + 0.5, cy - h / 2 + 0.5, w - 1, h - 1);
     ctx.fillStyle = c.ink; ctx.fillText(text, bx + 5, cy + 4);
   }
-  function text(ctx, s, x, y, color, align = "left", font = `11px ${MONO}`) {
-    ctx.font = font; ctx.fillStyle = color; ctx.textAlign = align; ctx.fillText(s, x, y); ctx.textAlign = "left";
+  // maxW > 0 shrinks the font so the string fits in maxW pixels.
+  function text(ctx, s, x, y, color, align = "left", font = `11px ${MONO}`, maxW = 0) {
+    ctx.font = font;
+    const tw = ctx.measureText(s).width;
+    if (maxW > 0 && tw > maxW) ctx.font = font.replace(/(\d+(?:\.\d+)?)px/, (m, px) => `${((px * maxW) / tw).toFixed(1)}px`);
+    ctx.fillStyle = color; ctx.textAlign = align; ctx.fillText(s, x, y); ctx.textAlign = "left";
   }
   function arrow(ctx, x1, y1, x2, y2, color, lw = 1.5) {
     const a = Math.atan2(y2 - y1, x2 - x1), hd = 8;
@@ -265,13 +269,14 @@
       const row = (vals, ox, y, hh) => vals.forEach((v, i) => { ctx.fillStyle = col(v, 1.1); ctx.fillRect(ox + i * cw + 0.5, y, cw - 1, hh + 0.4); });
       runs.forEach((r, k) => {
         const ox = ox0 + k * (pw + gapX);
-        text(ctx, r.name, ox, 16, c.ink2);
-        text(ctx, `x = ${r.x}`, ox, 36, c.red, "left", MATH);
+        const lw = Math.min(pw + gapX - 8, w - ox - 4);
+        text(ctx, r.name, ox, 16, c.ink2, "left", `11px ${MONO}`, lw);
+        text(ctx, `x = ${r.x}`, ox, 36, c.red, "left", MATH, lw);
         for (let t = 0; t <= show; t++) row(r.rows[t], ox, top + t * rh, rh);
         text(ctx, "⋮", ox + pw / 2, top + (show + 1) * rh + cut * 0.7, c.ink3, "center", `14px ${MONO}`);
         row(r.rows[steps], ox, yEnd, 3 * rh);
         ctx.strokeStyle = c.rule; ctx.lineWidth = 1; ctx.strokeRect(ox - 0.5, yEnd - 0.5, pw + 1, 3 * rh + 1);
-        text(ctx, `y = ${r.y}`, ox, yEnd + 3 * rh + 22, c.red, "left", MATH);
+        text(ctx, `y = ${r.y}`, ox, yEnd + 3 * rh + 22, c.red, "left", MATH, lw);
       });
       arrow(ctx, ox0 - 14, top, ox0 - 14, top + (show + 1) * rh, c.ink3, 1.2);
       text(ctx, "t", ox0 - 22, top + (show + 1) * rh / 2, c.ink3, "right", MATH);
@@ -359,7 +364,7 @@
       return phase;
     },
 
-    // sin x: a fixed-depth network (red) against the same network inside a loop x <- x - 2 pi (blue).
+    // sin x: a fixed-depth network (red) against a looped model (blue): the same network after x <- x - 2 pi until x < 2 pi.
     sine(cv, c, t) {
       const TAU = 2 * Math.PI, XTR = 2 * TAU, XMAX = 6 * TAU, N = 600;
       if (!cv._data) {
@@ -368,12 +373,12 @@
       }
       const { X, Y, Yi } = cv._data, { ctx, w, h } = VZ.fit(cv);
       ctx.fillStyle = c.bg; ctx.fillRect(0, 0, w, h);
-      const L = 34, R = w - 12, T = 28, B = h - 30, y0 = -1.6, y1 = 4.6;
+      const L = 34, R = w - 22, T = 28, B = h - 30, y0 = -1.6, y1 = 4.6;
       const px = (x) => L + (x / XMAX) * (R - L), py = (y) => B - ((clamp(y, y0, y1) - y0) / (y1 - y0)) * (B - T);
       ctx.fillStyle = c.page; ctx.globalAlpha = 0.7; ctx.fillRect(px(0), T, px(XTR) - px(0), B - T); ctx.globalAlpha = 1;
       text(ctx, "training range", px(0) + 6, T + 14, c.ink3);
       ctx.strokeStyle = c.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(L, py(0)); ctx.lineTo(R, py(0)); ctx.stroke();
-      ["0", "2π", "4π", "6π", "8π", "10π", "12π"].forEach((s, k) => text(ctx, s, px(k * TAU), B + 20, c.ink3, "center", MATH));
+      ["0", "2π", "4π", "6π", "8π", "10π", "12π"].forEach((s, k) => { if (k % 2 === 0 || (R - L) / 6 >= 40) text(ctx, s, px(k * TAU), B + 20, c.ink3, "center", MATH); });
       [-1, 1].forEach((v) => text(ctx, v < 0 ? "−1" : "1", L - 8, py(v) + 4, c.ink3, "right"));
       ctx.strokeStyle = c.ink3; ctx.lineWidth = 1.2; ctx.setLineDash([4, 5]); ctx.beginPath();
       X.forEach((x, i) => (i ? ctx.lineTo(px(x), py(Math.sin(x))) : ctx.moveTo(px(x), py(Math.sin(x))))); ctx.stroke(); ctx.setLineDash([]);
@@ -382,7 +387,7 @@
       const curve = (V, n, color) => { ctx.strokeStyle = color; ctx.lineWidth = 2.4; ctx.beginPath(); for (let i = 0; i <= n; i++) i ? ctx.lineTo(px(X[i]), py(V[i])) : ctx.moveTo(px(X[i]), py(V[i])); ctx.stroke(); };
       curve(Y, Math.floor(ease((t - 0.3) / 2.4) * N), c.red);
       curve(Yi, Math.floor(ease((t - 3.0) / 2.4) * N), c.blue);
-      if (t > 3) text(ctx, "network inside a loop", px(8.6 * Math.PI), py(-1.32), c.blue, "left");
+      if (t > 3) text(ctx, "looped model", px(8.6 * Math.PI), py(-1.32), c.blue, "left");
       if (t > 0.8) text(ctx, "fixed-depth network", px(6.3 * Math.PI), py(3.6), c.red, "left");
     },
 
@@ -423,21 +428,22 @@
 
     // CEM1D: two impulse pairs under the learned rule; one travels left, the other right.
     pulse(cv, c, t) {
-      if (!cv._runs) cv._runs = [[3, -3, "+ −  →  moves left"], [3, 3, "+ +  →  moves right"]].map(([a, b, lab]) => ({ lab, ...VZ.cem1dPulse([a, b]) }));
+      if (!cv._runs) cv._runs = [[3, -3, "+ −", "moves left"], [3, 3, "+ +", "moves right"]].map(([a, b, pair, dir]) => ({ pair, dir, ...VZ.cem1dPulse([a, b]) }));
       const steps = 18, rev = 3.2, u = t % (rev + 2.8), rows = Math.min(steps + 1, Math.floor((u / rev) * (steps + 1)) + 1);
       const { ctx, w, h } = VZ.fit(cv), col = diverging(c);
       ctx.fillStyle = c.bg; ctx.fillRect(0, 0, w, h);
-      const lm = 26, gap = 28, pw = (w - lm - gap - 10) / 2, L = 19, s = Math.min(pw / L, (h - 80) / (steps + 1));
+      const lm = 26, gap = 28, pw = (w - lm - gap - 10) / 2, L = 19, s = Math.min(pw / L, (h - 96) / (steps + 1));
       cv._runs.forEach((r, p) => {
         const ox = lm + p * (pw + gap) + (pw - L * s) / 2, oy = 6;
         for (let k = 0; k < rows; k++) for (let j = 0; j < L; j++) { ctx.fillStyle = col(r.rows[k][j], 3); ctx.fillRect(ox + j * s + 0.5, oy + k * s + 0.5, s - 1, s - 1); }
         ctx.strokeStyle = c.rule; ctx.lineWidth = 1; ctx.strokeRect(ox - 0.5, oy - 0.5, L * s + 1, (steps + 1) * s + 1);
         ctx.strokeStyle = c.ink; ctx.lineWidth = 1.5; ctx.strokeRect(ox + 8 * s + 1, oy + 1, 2 * s - 2, s - 2);
-        text(ctx, r.lab, ox + (L * s) / 2, oy + (steps + 1) * s + 20, c.ink2, "center");
+        text(ctx, r.pair, ox + (L * s) / 2, oy + (steps + 1) * s + 19, c.ink2, "center");
+        text(ctx, r.dir, ox + (L * s) / 2, oy + (steps + 1) * s + 34, c.ink2, "center");
       });
       arrow(ctx, 12, 8, 12, 6 + (steps + 1) * s, c.ink3, 1.2);
       const bw = Math.min(220, w - lm - 10);
-      colorbar(ctx, c, col, lm + (w - lm - 10 - bw) / 2, 6 + (steps + 1) * s + 40, bw, 3);
+      colorbar(ctx, c, col, lm + (w - lm - 10 - bw) / 2, 6 + (steps + 1) * s + 52, bw, 3);
     },
   };
 

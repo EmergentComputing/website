@@ -241,7 +241,7 @@ canvas[data-viz] { display: block; width: 100%; background: var(--fig); }
 .pin h3::after { content: " →"; color: var(--accent); opacity: 0; transition: opacity 0.2s; }
 .pin:hover h3::after { opacity: 1; }
 .pin p { color: var(--ink-2); font-size: 15.5px; margin: 0; }
-.posts { margin-top: 48px; }
+.pins + .items.posts { margin-top: 56px; }
 .posts .meta { white-space: nowrap; }
 .more { margin: 22px 0 0; font: 14px var(--mono); color: var(--ink-3); }
 
@@ -325,6 +325,9 @@ canvas[data-viz] { display: block; width: 100%; background: var(--fig); }
 .figure-body { padding: 16px; }
 .figure-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 30px 0 8px; }
 .figure-row .figure { margin: 0; }
+.figure-row { align-items: start; }
+.figure-row.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.figure-row.cols-lu { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
 .figure.wide { max-width: 920px; }
 .controls { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--rule); font: 13px var(--mono); color: var(--ink-2); }
 .controls label { display: inline-flex; align-items: center; gap: 6px; }
@@ -383,7 +386,9 @@ table.data td.num { font-family: var(--mono); font-size: 13.5px; white-space: no
   .hero-fig canvas { height: 380px; }
   .em-how canvas { height: 320px; }
   .em-block, .em-result, .sub { margin-top: 56px !important; }
-  .multiples, .figure-row, .cards, .pins { grid-template-columns: 1fr; }
+  .figure-row, .figure-row.cols-2, .figure-row.cols-lu, .cards, .pins { grid-template-columns: 1fr; }
+  .multiples { gap: 14px; }
+  .multiples canvas { height: 240px; }
   .paper-entry { grid-template-columns: 1fr; gap: 4px; }
   .items > li { grid-template-columns: 1fr; }
   .items > li > :not(:first-child) { grid-column: 1; }
@@ -393,6 +398,7 @@ table.data td.num { font-family: var(--mono); font-size: 13.5px; white-space: no
   .people { grid-template-columns: 1fr; }
   .facts { gap: 12px 28px; }
   .facts dd { font-size: 25px; }
+  .multiples { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
